@@ -5,6 +5,7 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import crearLaberintos.Laberinto
 import org.uqbar.xtrest.api.XTRest
+import repo.Repo
 
 @Controller
 class LaberintoController {
@@ -13,9 +14,12 @@ class LaberintoController {
 	@Get("/laberintos")
 	def mostrarLista() {
 		response.contentType = "application/json"
+		
+		var repo = new Repo()
+		
 		var idJugador = .....
-		val todosLosLabs = repo.laberintos()
-		val usuario = repo.usuario(idJugador)
+		val jugador = repo.getJugador(idJugador)
+		val todosLosLabs = repo.getLaberintos()
 		val laberintos = LaberintoFactory.conEstadoPara(laberintos, usaurio)..............]
 		ok(laberintos.toJson)
 	}

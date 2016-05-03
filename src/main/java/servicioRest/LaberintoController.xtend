@@ -13,8 +13,11 @@ class LaberintoController {
 	@Get("/laberintos")
 	def mostrarLista() {
 		response.contentType = "application/json"
-		var laberintos = new Laberinto()
-		ok(laberintos.listaLaberintos().toJson)
+		var idJugador = .....
+		val todosLosLabs = repo.laberintos()
+		val usuario = repo.usuario(idJugador)
+		val laberintos = LaberintoFactory.conEstadoPara(laberintos, usaurio)..............]
+		ok(laberintos.toJson)
 	}
 
 	def static void main(String[] args) {

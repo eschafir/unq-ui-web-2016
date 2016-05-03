@@ -21,14 +21,4 @@ class Laberinto {
 		this.path = path
 	}
 
-/**
- * Este metodo genera los laberintos. Luego es llamado desde el controller.
- */
-	def listaLaberintos() {
-		#[
-			new Laberinto(1, "Casa embrujada", "saraza"),
-			new Laberinto(2, "Museo", "lalala")
-		]
-	}
-
 }

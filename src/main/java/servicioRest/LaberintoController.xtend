@@ -19,23 +19,26 @@ class LaberintoController {
 
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
-		val todosLosLabs = repo.getLaberintos()
-		val laberintos = LaberintoFactory.conEstadoPara(todosLosLabs, jugador)
-		ok(laberintos.toJson)
+		
+		/*
+		 * ESTO FUE PROPUESTO POR GISELLA 
+		 *
+			val todosLosLaberintos = repo.getLaberintos()
+			val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
+		 */
+		  
+		ok(jugador.laberintos.toJson)
 	}
 
-	/**
-	 * 
-	 * 
 	@Get("/laberintos")
-	def mostrarLaberintos(){
+	def mostrarLaberintos() {
 		response.contentType = "application/json"
-		
+
 		val repo = new Repo()
-		
+
 		ok(repo.laberintos.toJson)
 	}
-	 */
+
 	def static void main(String[] args) {
 
 		XTRest.start(LaberintoController, 9000)

@@ -10,7 +10,16 @@ import crearLaberintos.LaberintoFactory
 @Controller
 class LaberintoController {
 	extension JSONUtils = new JSONUtils
+	
+	@Get("/laberintos")
+	def mostrarLaberintos() {
+		response.contentType = "application/json"
 
+		val repo = new Repo()
+
+		ok(repo.laberintos.toJson)
+	}
+	
 	@Get("/laberintos/:userid")
 	def mostrarLista() {
 		response.contentType = "application/json"
@@ -30,13 +39,17 @@ class LaberintoController {
 		ok(jugador.laberintos.toJson)
 	}
 
-	@Get("/laberintos")
-	def mostrarLaberintos() {
+	@Get("/laberintos/:userid:/idLaberinto")
+	def mostrarDatosLaberinto() {
 		response.contentType = "application/json"
 
-		val repo = new Repo()
+		val idJugador = Long.parseLong(userid)
 
-		ok(repo.laberintos.toJson)
+		var repo = new Repo()
+		val jugador = repo.getJugador(idJugador)
+		
+		  
+		ok(jugador.laberintos.toJson)
 	}
 
 	def static void main(String[] args) {

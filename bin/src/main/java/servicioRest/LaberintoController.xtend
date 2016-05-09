@@ -5,21 +5,21 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.XTRest
 import repo.Repo
-import crearLaberintos.LaberintoFactory
+import crearLaberintos.LaberintoMinimizado
 
 @Controller
 class LaberintoController {
 	extension JSONUtils = new JSONUtils
-	
+
 	@Get("/laberintos")
 	def mostrarLaberintos() {
 		response.contentType = "application/json"
 
 		val repo = new Repo()
 
-		ok(repo.laberintos.toJson)
+		ok(repo.laberintosMinimizados.toJson)
 	}
-	
+
 	@Get("/laberintos/:userid")
 	def mostrarLista() {
 		response.contentType = "application/json"
@@ -29,26 +29,22 @@ class LaberintoController {
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idJugador)
-		//val todosLosLaberintos = repo.getLaberintos()
-		//val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
-				  
-		//ok(jugador.laberintos.toJson)
+
 		ok(laberinto.toJson)
 	}
 
-	@Get("/laberintos/:userid:/:idLaberinto")
-	def mostrarDatosLaberinto() {
+	@Get("/iniciarLaberinto")
+	def mostrarDatosLaberinto(String uid, String lid) {
 		response.contentType = "application/json"
 
-		val idJugador = Long.parseLong(userid)
-		val idLab = Long.parseLong(idLaberinto)
+		val idJugador = Long.parseLong(uid)
+		val idLab = Long.parseLong(lid)
 
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 		
-		val respuesta = LaberintoFactory.objetoADevolver(jugador, laberinto)
-		
+		val respuesta = new LaberintoMinimizado(laberinto, jugador)
 		ok(respuesta.toJson)
 	}
 

@@ -38,8 +38,8 @@ class Repo {
 		var jugador1 = new Jugador(1, "Player1")
 		var jugador2 = new Jugador(2, "Player2")
 
-		jugador1.laberintos = laberintos.tail.toList
-		jugador2.laberintos = laberintos
+		jugador1.laberintos = laberintosMinimizados.tail.toList
+		jugador2.laberintos = laberintosMinimizados
 
 		listaJugadores.add(jugador1)
 		listaJugadores.add(jugador2)
@@ -60,14 +60,14 @@ class Repo {
 	 * @params id : id del laberinto que se quiere obtener.
 	 */
 	def getLaberinto(Long id) {
-		getLaberintos.findFirst[it.id == id]
+		laberintosMinimizados.findFirst[it.id == id]
 	}
 
 	def laberintosDeJugador(Jugador j) {
 
 		var lista = new ArrayList<Laberinto>
 
-		for (Laberinto l : laberintos) {
+		for (Laberinto l : laberintosMinimizados) {
 			if (j.laberintos.contains(l)) {
 				lista.add(l)
 			}

@@ -28,28 +28,27 @@ class LaberintoController {
 
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
-		
-		/*
-		 * ESTO FUE PROPUESTO POR GISELLA 
-		 *
-			val todosLosLaberintos = repo.getLaberintos()
-			val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
-		 */
-		  
-		ok(jugador.laberintos.toJson)
+
+		val todosLosLaberintos = repo.getLaberintos()
+		val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
+				  
+		ok(laberintos.toJson)
 	}
 
-	@Get("/laberintos/:userid:/idLaberinto")
+	@Get("/laberintos/:userid:/:idLaberinto")
 	def mostrarDatosLaberinto() {
 		response.contentType = "application/json"
 
 		val idJugador = Long.parseLong(userid)
+		val idLab = Long.parseLong(idLaberinto)
 
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
+		val laberinto = repo.getLaberinto(idLab)
 		
-		  
-		ok(jugador.laberintos.toJson)
+		val labADevolver = LaberintoFactory.iniciarLaberintoPara(laberinto, jugador)
+						  
+		ok(labADevolver.toJson)
 	}
 
 	def static void main(String[] args) {

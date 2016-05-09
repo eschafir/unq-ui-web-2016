@@ -50,7 +50,15 @@ class Repo {
 	def getJugador(Long id) {
 		listaJugadores.findFirst[it.id == id]
 	}
-
+	
+	/**
+	 * Devuelve el laberinto cuyo id fue ingresado.
+	 * @params id : id del laberinto que se quiere obtener.
+	 */
+	def getLaberinto(Long id){
+		getLaberintos.findFirst[it.id == id]
+	}
+	
 	def laberintosDeJugador(Jugador j) {
 
 		var lista = new ArrayList<Laberinto>

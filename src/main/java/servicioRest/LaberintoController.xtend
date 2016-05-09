@@ -5,7 +5,7 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.XTRest
 import repo.Repo
-import crearLaberintos.LaberintoFactory
+import crearLaberintos.LaberintoMinimizado
 
 @Controller
 class LaberintoController {
@@ -17,7 +17,7 @@ class LaberintoController {
 
 		val repo = new Repo()
 
-		ok(repo.laberintos.toJson)
+		ok(repo.laberintosMinimizados.toJson)
 	}
 
 	@Get("/laberintos/:userid")
@@ -30,9 +30,6 @@ class LaberintoController {
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idJugador)
 
-		//val todosLosLaberintos = repo.getLaberintos()
-		//val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
-		//ok(jugador.laberintos.toJson)
 		ok(laberinto.toJson)
 	}
 
@@ -47,7 +44,7 @@ class LaberintoController {
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 		
-		val respuesta = new LaberintoFactory(laberinto, jugador)
+		val respuesta = new LaberintoMinimizado(laberinto, jugador)
 		ok(respuesta.toJson)
 	}
 

@@ -10,7 +10,7 @@ import crearLaberintos.LaberintoFactory
 @Controller
 class LaberintoController {
 	extension JSONUtils = new JSONUtils
-
+	
 	@Get("/laberintos")
 	def mostrarLaberintos() {
 		response.contentType = "application/json"
@@ -19,7 +19,7 @@ class LaberintoController {
 
 		ok(repo.laberintos.toJson)
 	}
-
+	
 	@Get("/laberintos/:userid")
 	def mostrarLista() {
 		response.contentType = "application/json"
@@ -29,25 +29,26 @@ class LaberintoController {
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idJugador)
-
 		//val todosLosLaberintos = repo.getLaberintos()
 		//val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
+				  
 		//ok(jugador.laberintos.toJson)
 		ok(laberinto.toJson)
 	}
 
-	@Get("/iniciarLaberinto")
-	def mostrarDatosLaberinto(String uid, String lid) {
+	@Get("/laberintos/:userid:/:idLaberinto")
+	def mostrarDatosLaberinto() {
 		response.contentType = "application/json"
 
-		val idJugador = Long.parseLong(uid)
-		val idLab = Long.parseLong(lid)
+		val idJugador = Long.parseLong(userid)
+		val idLab = Long.parseLong(idLaberinto)
 
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 		
-		val respuesta = new LaberintoFactory(laberinto, jugador)
+		val respuesta = LaberintoFactory.objetoADevolver(jugador, laberinto)
+		
 		ok(respuesta.toJson)
 	}
 

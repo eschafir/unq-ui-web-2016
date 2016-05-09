@@ -34,11 +34,11 @@ class LaberintoFactory {
 		
 		var Laberinto lab = null
 		for(Laberinto l : jugador.laberintos){
-			if (jugador.laberintos.contains(l)){
+			if (jugador.laberintos.contains(l) && (l == laberinto)){
 				val habsParaEnviar = iniciarHabitacionesDe(l)
-				lab = new Laberinto(l.id,l.nombre,l.path,habsParaEnviar)
+				lab = new Laberinto(l.id,habsParaEnviar)
 			}
-		}	
+		}
 		return lab
 	}
 }

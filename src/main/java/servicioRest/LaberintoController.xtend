@@ -28,11 +28,12 @@ class LaberintoController {
 
 		var repo = new Repo()
 		val jugador = repo.getJugador(idJugador)
-
-		val todosLosLaberintos = repo.getLaberintos()
-		val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
+		val laberinto = repo.getLaberinto(idJugador)
+		//val todosLosLaberintos = repo.getLaberintos()
+		//val laberintos = LaberintoFactory.conEstadoPara(todosLosLaberintos, jugador)
 				  
-		ok(laberintos.toJson)
+		//ok(jugador.laberintos.toJson)
+		ok(laberinto.toJson)
 	}
 
 	@Get("/laberintos/:userid:/:idLaberinto")
@@ -46,9 +47,9 @@ class LaberintoController {
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 		
-		val labADevolver = LaberintoFactory.iniciarLaberintoPara(laberinto, jugador)
-						  
-		ok(labADevolver.toJson)
+		val respuesta = LaberintoFactory.objetoADevolver(jugador, laberinto)
+		
+		ok(respuesta.toJson)
 	}
 
 	def static void main(String[] args) {

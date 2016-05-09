@@ -5,40 +5,27 @@ import java.util.List
 import unq_ciu.gatoEncerrado.Jugador
 import unq_ciu.gatoEncerrado.Laberinto
 import unq_ciu.gatoEncerrado.Habitacion
+import org.eclipse.xtend.lib.annotations.Accessors
+import unq_ciu.gatoEncerrado.Accion
+import unq_ciu.gatoEncerrado.Item
 
+@Accessors
 class LaberintoFactory {
-
-	def static conEstadoPara(List<Laberinto> laberintos, Jugador jugador) {
-
-		var lista = new ArrayList<Laberinto>
-
-		for (Laberinto l : laberintos) {
-			if (jugador.laberintos.contains(l)) {
-				val lab = new Laberinto(l.id,l.nombre,l.path)
-				lista.add(lab)
-			}
-		}
-		return lista
+	Laberinto laberinto
+	Jugador jugador
+	List<Habitacion> habitaciones
+	List<Accion> acciones
+	List<Item> elementos
+	
+	new(Laberinto laberinto, Jugador jugador){
+		this.laberinto = laberinto
+		this.jugador = jugador
+		this.habitaciones = laberinto.habitaciones
+		//this.acciones = laberinto.habitaciones.acciones
+		this.elementos = jugador.inventario
 	}
-
-	def static iniciarHabitacionesDe(Laberinto laberinto) {
-		var List<Habitacion> habs = new ArrayList<Habitacion>
-		for (Habitacion h : laberinto.habitaciones){
-			val hab = new Habitacion(h.id,h.nombre,h.acciones,h.path)
-			habs.add(hab)
-		}
-		return habs
-	}
-		
-	def static iniciarLaberintoPara(Laberinto laberinto, Jugador jugador){
-		
-		var Laberinto lab = null
-		for(Laberinto l : jugador.laberintos){
-			if (jugador.laberintos.contains(l) && (l == laberinto)){
-				val habsParaEnviar = iniciarHabitacionesDe(l)
-				lab = new Laberinto(l.id,habsParaEnviar)
-			}
-		}
-		return lab
+	
+	def static objetoADevolver(Jugador jug, Laberinto lab) {
+		return new LaberintoFactory(lab, jug)
 	}
 }

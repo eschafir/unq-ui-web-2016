@@ -22,17 +22,19 @@ class Repo {
 		val listaAcciones = new ArrayList<Accion>()
 
 		val hab3 = new Habitacion(2, "Pasillo", true, false, "hab3.jpg")
-		val accion1 = new Mover(1, hab3)
+		val accion1 = new Mover(1, new Habitacion(34, "Cocina", false, false, "path"))
 		listaAcciones.add(accion1)
 
 		hab3.acciones = listaAcciones
+		val habitaciones = new ArrayList<Habitacion>
+		habitaciones.add(hab3)
 
 		//val hab2 = new Habitacion(2, "Pasillo", true, false, listaAcciones, "hab2.jpg")
 		//acc1 = new Mover(hab2)
 		//hab2 = new Habitacion(1, "Living", true, false, listaAcciones, "hab1.jpg")
 		#[
 			new Laberinto(1, "Casa abandonada", "image1.jpg"),
-			new Laberinto(2, "Museo", "image2.jpg", #[hab3]),
+			new Laberinto(2, "Museo", "image2.jpg", habitaciones),
 			new Laberinto(3, "Plaza", "image3.jpg"),
 			new Laberinto(4, "Hospital", "image4.jpg"),
 			new Laberinto(5, "Estación de bomberos", "image5.jpg")

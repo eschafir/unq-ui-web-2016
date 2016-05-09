@@ -12,15 +12,15 @@ import unq_ciu.gatoEncerrado.Item
 class LaberintoFactory {
 	int laberintoId
 	List<Habitacion> habitaciones
-	List<Item> elementos
+	List<Item> inventario
 
 	new(Laberinto laberinto, Jugador jugador) {
 		this.laberintoId = laberinto.id
 		this.habitaciones = laberinto.habitaciones
-		this.elementos = jugador.inventario
+		this.inventario = jugador.inventario
 	}
 
-	def static objetoADevolver(Jugador jug, Laberinto lab) {
+	def static objetoADevolver(Laberinto lab, Jugador jug) {
 		return new LaberintoFactory(lab, jug)
 	}
 

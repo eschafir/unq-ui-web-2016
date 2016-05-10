@@ -1,0 +1,20 @@
+.btn-mio-ok,
+.btn-mio:active {
+	width:120px;
+	background:#31B404;
+	margin:0px 220px;
+}
+
+.btn-mio-si,
+.btn-mio:active {
+	width:120px;
+	background:#DF0101;
+	display: inline-block;
+}
+
+.btn-mio-no,
+.btn-mio:active {
+	width:120px;
+	background:#31B404;
+	display: inline-block;
+}

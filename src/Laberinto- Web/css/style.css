@@ -1,0 +1,151 @@
+body {
+  background-color:#003366;
+  padding-top:20px;
+  padding-bottom: 40px;
+}
+
+#header {
+	font-size:50px;
+	margin-left:2px;
+}
+
+#aside {
+	background-color:#F2F2F2;
+	margin-top:12px;
+}
+
+#seccion {
+	background-color:#F2F2F2;
+	border-style:solid;
+	margin-top:12px;
+	margin-right:-100px;
+	text-align:center;
+	height:500px;
+	width:760px;
+}
+
+#footer {
+	font-size:10px;
+	height: 90px;
+	margin-top: 20px;
+}
+
+
+h1 {
+	font-size:3px; 
+	color: #000000;
+	margin-top:-330px;
+}
+
+h5 {
+	font-size:19px;
+}
+
+h6 {
+	float:right;
+	margin-top:20px;
+	margin-right:-90px;
+}
+
+#menuLaberintos li {
+	background-color:#F2F2F2;
+	height:56px;
+	margin-top:20px;
+	padding:2px;
+	border:2px solid#CCCCCC;
+	border-color:#000000;
+	font-size:16px;
+	list-style-type:none;
+	}
+
+.header  {
+	font-size:30px;
+}
+
+
+.fade
+{
+        opacity:0.5;
+}
+.fade:hover
+{
+        opacity:1;
+}
+
+
+
+@-webkit-keyframes swing
+{
+15%
+{
+-webkit-transform: translateX(5px);
+transform: translateX(5px);
+}
+30%
+{
+-webkit-transform: translateX(-5px);
+transform: translateX(-5px);
+}
+50%
+{
+-webkit-transform: translateX(3px);
+transform: translateX(3px);
+}
+65%
+{
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+}
+80%
+{
+-webkit-transform: translateX(2px);
+transform: translateX(2px);
+}
+100%
+{
+-webkit-transform: translateX(0);
+transform: translateX(0);
+}
+}
+@keyframes swing
+{
+15%
+{
+-webkit-transform: translateX(5px);
+transform: translateX(5px);
+}
+30%
+{
+-webkit-transform: translateX(-5px);
+transform: translateX(-5px);
+}
+50%
+{
+-webkit-transform: translateX(3px);
+transform: translateX(3px);
+}
+65%
+{
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+}
+80%
+{
+-webkit-transform: translateX(2px);
+transform: translateX(2px);
+}
+100%
+{
+-webkit-transform: translateX(0);
+transform: translateX(0);
+}
+}
+
+
+.swing:hover
+{
+-webkit-animation: swing 1s ease;
+animation: swing 1s ease;
+-webkit-animation-iteration-count: 1;
+animation-iteration-count: 1;
+}

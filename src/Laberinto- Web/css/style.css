@@ -1,7 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Passion+One:400,700);
+@import url(https://fonts.googleapis.com/css?family=Oxygen);
+@import url(https://fonts.googleapis.com/css?family=Alfa+Slab+One);
+
 body {
-  background-color:#003366;
-  padding-top:20px;
-  padding-bottom: 40px;
+	background: #d8e0de; /* Old browsers */
+    background: -webkit-linear-gradient(top, #0e0e0e 0%, #4e5c5a 28%, #829d98 56%, #99afab 67%, #aebfbc 84%, #d8e0de 100%);
+    background: -o-linear-gradient(top, #0e0e0e 0%, #4e5c5a 28%, #829d98 56%, #99afab 67%, #aebfbc 84%, #d8e0de 100%);
+    background: linear-gradient(to bottom, #0e0e0e 0%, #4e5c5a 28%, #829d98 56%, #99afab 67%, #aebfbc 84%, #d8e0de 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	padding-top:20px;
+	padding-bottom: 40px;
+	height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.gametitle {
+	font-family: 'Alfa Slab One'; cursive;
+	font-size: 50px;
+	display: inline-block;
+	padding-top: 5px;
+
+}
+
+.pull-right {
+    margin-top: 27px;
+}
+
+p {
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 400;
 }
 
 #header {
@@ -9,19 +37,36 @@ body {
 	margin-left:2px;
 }
 
+.catimg {
+	margin-bottom: 10px;
+}
+
 #aside {
-	background-color:#F2F2F2;
+	background-color:#FFFFFF;
 	margin-top:12px;
+	box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
 }
 
 #seccion {
-	background-color:#F2F2F2;
+	background-color:#FFFFFF;
 	border-style:solid;
 	margin-top:12px;
 	margin-right:-100px;
 	text-align:center;
 	height:500px;
-	width:760px;
+	width:766px;
+	box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
+}
+
+.flecha {
+	margin-top: 35px;
+}
+
+.well {
+	background-color: rgba(221, 221, 221, 0.59);
+	border: none;
+	font-family: 'Passion One', cursive;
+	padding: 5px;
 }
 
 #footer {
@@ -35,7 +80,9 @@ body {
 }
 
 #tituloSeleccion h2 {
-	font-size:40px;
+	font-size: 64px;
+	margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -44,8 +91,14 @@ h1 {
 	margin-top:-330px;
 }
 
+h4 {
+	font-size:19px;
+	font-family: 'Oxygen', sans-serif;
+}
+
 h5 {
 	font-size:19px;
+	font-family: 'Oxygen', sans-serif;
 }
 
 h6 {
@@ -70,6 +123,31 @@ h6 {
 	font-size:30px;
 }
 
+.laberinto1 {
+	cursor:pointer;
+}
+
+.laberinto2 {
+	cursor:pointer;
+}
+
+.laberinto3 {
+	cursor:pointer;
+}
+
+.laberinto4 {
+	cursor:pointer;
+}
+
+#iconUser2 {
+	float:right;
+	margin-right:170px;
+}
+
+#iconUser2  h5{
+	float:right;
+	font-size:16px;
+}
 
 .fade
 {

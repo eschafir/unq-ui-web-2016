@@ -24,9 +24,8 @@
 	text-align:left;
 }
 
-
-#contenedorInterno p {
-	margin-top:-40px;
+#contenedorModal {
+	
 }
 
 .btn-mio-jugar {
@@ -39,4 +38,3 @@
 #contenedorModal  h3{
 	font-size:40px;
 }
-

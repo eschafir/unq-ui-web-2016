@@ -24,14 +24,6 @@ class Repo {
  	*/
 	def getLaberintosMinimizados() {
 
-		var habitaciones = newArrayList()
-		var hab = new Habitacion(1, "Inicial", true, false, "path")
-		var hab1 = new Habitacion(2, "Cocina", false, true, "path2")
-		val accion = new Usar(new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
-		hab.agregarAccion(accion)
-		habitaciones.add(hab)
-		habitaciones.add(hab1)
-
 		#[
 			new Laberinto(0, "Testing", "path de imagen", habitaciones),
 			new Laberinto(1, "Casa abandonada", "image1.jpg"),
@@ -40,6 +32,18 @@ class Repo {
 			new Laberinto(4, "Hospital", "image4.jpg"),
 			new Laberinto(5, "Estación de bomberos", "image5.jpg")
 		]
+	}
+
+	def getHabitaciones() {
+		var habitaciones = newArrayList()
+		var hab = new Habitacion(1, "Inicial", true, false, "path")
+		var hab1 = new Habitacion(2, "Cocina", false, true, "path2")
+		val accion = new Usar(new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
+		hab.agregarAccion(accion)
+		habitaciones.add(hab)
+		habitaciones.add(hab1)
+
+		return habitaciones
 	}
 
 	/**
@@ -53,7 +57,8 @@ class Repo {
 		var jugador2 = new Jugador(2, "Player2")
 		jugador1.inventario = #[
 			new Item("Mochila", "Mochila grande"),
-			new Item("Pila", "Pila AA")
+			new Item("Pila", "Pila AA"),
+			new Item("Binocular", "Militar")
 		]
 
 		jugador1.laberintos = laberintosMinimizados.tail.toList
@@ -79,6 +84,14 @@ class Repo {
 	 */
 	def getLaberinto(Long id) {
 		laberintosMinimizados.findFirst[it.id == id]
+	}
+
+	/**
+	 * Devuelve ls habitacion cuyo id fue ingresado.
+	 * @params id : id de la habitacion que se quiere obtener.
+	 */
+	def getHabitacion(Long id) {
+		habitaciones.findFirst[it.id == id]
 	}
 
 	def laberintosDeJugador(Jugador j) {

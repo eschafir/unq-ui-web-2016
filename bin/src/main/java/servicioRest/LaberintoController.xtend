@@ -49,6 +49,19 @@ class LaberintoController {
 		ok(respuesta.toJson)
 	}
 
+	@Get("/realizarAccion")
+	def mostrarDatosAccionRealizada(String hid, String aid) {
+		response.contentType = "application/json"
+
+		val idHabitacion = Long.parseLong(hid)
+		val idAccion = Long.parseLong(aid)
+
+		var repo = new Repo()
+		val habitacion = repo.getHabitacion(idHabitacion)
+
+		ok(habitacion.toJson)
+	}
+
 	def static void main(String[] args) {
 
 		XTRest.start(LaberintoController, 9000)

@@ -5,7 +5,6 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.XTRest
 import repo.Repo
-
 import crearLaberintos.IniciarLaberintoMinimizadoIF
 
 @Controller
@@ -49,8 +48,21 @@ class LaberintoController {
 		ok(respuesta.toJson)
 	}
 
-	def static void main(String[] args) {
+	@Get("/realizarAccion")
+	def mostrarDatosAccionRealizada(String hid, String aid) {
+		response.contentType = "application/json"
 
+		val idHabitacion = Long.parseLong(hid)
+		val idAccion = Long.parseLong(aid)
+
+		var repo = new Repo()
+		val habitacion = repo.getHabitacion(idHabitacion)
+		val accion = habitacion.buscarAccion(idAccion)
+
+		ok(accion.toJson)
+	}
+
+	def static void main(String[] args) {
 		XTRest.start(LaberintoController, 9000)
 	}
 }

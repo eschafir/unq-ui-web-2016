@@ -6,9 +6,13 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/style.css" rel="stylesheet">
+    <script src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js"></script>
 	<script src="html/js/jquery-1.12.3.min.js"></script>
-    <script src="html/js/bootstrap.min.js"></script>
-      <title>Aca hay gato encerrado</title>
+  <script src="html/js/bootstrap.min.js"></script>
+  <!-- Agregamos angular para que funcione  -->
+  <script src="html/js/angular.min.js"></script>
+
+    <title>Aca hay gato encerrado</title>
 
     <!-- Script que expande elementos de lista -->
     <script>
@@ -21,9 +25,23 @@
           window.resizeTo(screen.ancho, screen.alto);
 }
     </script>  
+
+    <script type="text/javascript">
+    function cambiarColor(x)
+    {
+      if(x.style.background=="lightsteelblue")
+      {
+          x.style.background="#fff";
+      } else{
+          x.style.background="lightsteelblue";
+      }
+      return false;
+      }
+    </script>
+   
    </head>
 
-   <body class="container">
+   <body ng-controller="myAppController" class="container">
    <!-- Cabecera -->
               <div id="header" class="row">
                 <div class="col-md-12 header panel panel-default row">
@@ -39,22 +57,27 @@
         <aside class="col-md-3 panel panel-default" id="aside">
           <div id="menuLaberintos panel panel-default">
             <ul class="list-group">
-              <li class="laberinto1 list-group-item row swing" onclick="#" >
+              <li class="laberinto1 list-group-item row swing" onclick="cambiarColor(this)" ng-click='mostrarVentanaModal()'>
+              <modal-dialog show='modalShown' 
+                    width='95' 
+                    height='95' 
+                    template-user="accesoLaberintoModal.html">
+              </modal-dialog>
                 <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto1.jpg" height="40px"width="40px"/></a>
                 <p>Laberinto 1</p>
               </li>
 
-              <li class="laberinto2 list-group-item row swing" onclick="#">
+              <li class="laberinto2 list-group-item row swing" onclick="cambiarColor(this)">
                 <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto2.jpg" height="40px"width="40px"/></a>
                 <p>Laberinto 2</p>
               </li>
 
-              <li class="laberinto3 list-group-item row swing" onclick="#">
+              <li class="laberinto3 list-group-item row swing" onclick="cambiarColor(this)">
                 <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto3.jpg" height="40px"width="40px"/></a>
                 <p>Laberinto 3</p>
               </li>
 
-              <li class="laberinto4 list-group-item row swing" onclick="#">
+              <li class="laberinto4 list-group-item row swing" onclick="cambiarColor(this)">
                 <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto3.jpg" height="40px"width="40px"/></a>
                 <p>Laberinto 4</p>
               </li>

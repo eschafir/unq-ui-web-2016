@@ -21,6 +21,13 @@
     </script>
 
     <script>
+      function mostrarVentanaModal() {
+         $("#contenedorModal").modal("show");
+      });
+
+    </script>
+
+    <script>
       function cerrarVentanaGanastaModal() {
         $('#contenedorModal').modal('hide');
     }
@@ -31,9 +38,9 @@
    <div class="modal fade" id="contenedorModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header well">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3 style="text-align: center;">Laberinto 1</h3>
+            <h3 style="text-align:center;">Laberinto 1</h3>
      </div>
          <div id="contenedorInterno" class="modal-body col-md-8 col-md-offset-2 well well-lg">
 			<br></br>

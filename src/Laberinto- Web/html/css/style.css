@@ -24,9 +24,11 @@
 	text-align:left;
 }
 
-#contenedorModal {
-	
+#contenedorInterno p img {
+	margin-right:10px;
+
 }
+
 
 .btn-mio-jugar {
 	float:right;
@@ -36,5 +38,12 @@
 }
 
 #contenedorModal  h3{
-	font-size:40px;
-}
+	font-size:30px;
+	}
+
+.well {
+	background-color: rgba(221, 221, 221, 0.59);
+	border: none;
+	font-family: 'Passion One', cursive;
+	padding: 5px;
+}	

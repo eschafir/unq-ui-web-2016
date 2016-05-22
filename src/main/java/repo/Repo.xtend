@@ -26,7 +26,7 @@ class Repo {
 
 		var habitaciones = newArrayList()
 		var hab = new Habitacion(1, "Inicial", true, false, "path")
-		var hab1 = new Habitacion(2, "cocina", false, false, "path2")
+		var hab1 = new Habitacion(2, "Cocina", false, true, "path2")
 		val accion = new Usar(new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
 		hab.agregarAccion(accion)
 		habitaciones.add(hab)

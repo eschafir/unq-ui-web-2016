@@ -5,8 +5,8 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.XTRest
 import repo.Repo
-import crearLaberintos.LaberintoMinimizado
-import crearLaberintos.IniciarLaberintoMinimizado
+
+import crearLaberintos.IniciarLaberintoMinimizadoIF
 
 @Controller
 class LaberintoController {
@@ -45,7 +45,7 @@ class LaberintoController {
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 
-		val respuesta = new IniciarLaberintoMinimizado(jugador, laberinto)
+		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
 		ok(respuesta.toJson)
 	}
 

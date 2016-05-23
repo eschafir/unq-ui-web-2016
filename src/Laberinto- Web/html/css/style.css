@@ -84,15 +84,14 @@
 }
 
 
-#contenedorModal {
-	float: left;
-	height:650px;
+.tituloModal {
+	
+	font-size:30px;
+	
 
 }
 
-#contenedorModal  h3{
-	font-size:30px;
-	}
+
 
 .list-group {
 	list-style:none;

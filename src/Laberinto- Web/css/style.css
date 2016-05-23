@@ -15,6 +15,13 @@ body {
     background-attachment: fixed;
 }
 
+
+.modal .titulo{
+	font-size:60px;	
+}
+
+
+
 .gametitle {
 	font-family: 'Alfa Slab One'; cursive;
 	font-size: 50px;

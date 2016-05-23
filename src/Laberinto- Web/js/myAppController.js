@@ -1,15 +1,6 @@
-angular.module("myAppController", [])
-	.controller('homeController', ['$scope','$modal',function($scope,$modal)
-	{	
+var app = angular.module("laberintoApplication", []);
+
+app.controller('laberintoController', function($scope){
+	$scope.laberintos = [{nombre: 'hola'},{nombre: 'lab 2'},{nombre:"Laberinto 3"}];
 	
-	/**
-	* Abre la modal
-	*/
-	$scope.openModal = function () 
-	{
-	    var modalInstance = $modal.open({
-		    templateUrl:'accesoLaberintoModal.html'
-		    }
-	    });
-	}
-}]);
+});

@@ -5,13 +5,12 @@
    <head>
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/style.css" rel="stylesheet">
-    <script src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js"></script>
-	<script src="html/js/jquery-1.12.3.min.js"></script>
-  <script src="html/js/bootstrap.min.js"></script>
-  <!-- Agregamos angular para que funcione  -->
-  <script src="html/js/angular.min.js"></script>
-
+	  <script src="html/js/jquery-1.12.3.min.js"></script>
+    <script src="html/js/bootstrap.min.js"></script>
+    <!-- Agregamos angularJS-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/myAppController.js"></script>
+    <script src="js/controller.js"></script>
     <title>Aca hay gato encerrado</title>
 
     <!-- Script que expande elementos de lista -->
@@ -41,7 +40,8 @@
    
    </head>
 
-   <body ng-controller="myAppController" class="container">
+   <body class="container" ng-app="laberintoApplication">
+<div ng-controller="laberintoController">
    <!-- Cabecera -->
               <div id="header" class="row">
                 <div class="col-md-12 header panel panel-default row">
@@ -57,29 +57,11 @@
         <aside class="col-md-3 panel panel-default" id="aside">
           <div id="menuLaberintos panel panel-default">
             <ul class="list-group">
-              <li class="laberinto1 list-group-item row swing" onclick="cambiarColor(this)" ng-click='mostrarVentanaModal()'>
-              <modal-dialog show='modalShown' 
-                    width='95' 
-                    height='95' 
-                    template-user="accesoLaberintoModal.html">
-              </modal-dialog>
-                <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto1.jpg" height="40px"width="40px"/></a>
-                <p>Laberinto 1</p>
-              </li>
-
-              <li class="laberinto2 list-group-item row swing" onclick="cambiarColor(this)">
-                <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto2.jpg" height="40px"width="40px"/></a>
-                <p>Laberinto 2</p>
-              </li>
-
-              <li class="laberinto3 list-group-item row swing" onclick="cambiarColor(this)">
-                <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto3.jpg" height="40px"width="40px"/></a>
-                <p>Laberinto 3</p>
-              </li>
-
-              <li class="laberinto4 list-group-item row swing" onclick="cambiarColor(this)">
-                <a href="" class="col-md-3 col-md-offset-1"><img src="images/laberinto3.jpg" height="40px"width="40px"/></a>
-                <p>Laberinto 4</p>
+              <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
+                <div>
+                  <img src="images/laberinto1.jpg" />
+                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#accesoLaberintoModal"> {{laberinto.nombre}}</button>
+                </div>
               </li>
             </ul>  
             </div>
@@ -97,5 +79,33 @@
             <h5>Construcción de Interfaces de Usuarios: 2016</h5>
             <h4>Grupo Nro. 5 - <strong>Alumnos: Schafir Esteban, Gonzalez Octavio, Presa Federico.</strong></h4>
         </footer>
+        </div>
+
+
+
+  <!-- Modales -->
+
+  <!-- Modal de Laberinto -->
+  <div class="laberintoModal modal" id="accesoLaberintoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+           <div class="modal-header well">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="titulo">Laberinto 1</h3>
+           </div>
+           <div id="contenedorInterno" class="modal-body col-md-8 col-md-offset-2 well well-lg">
+        <p>
+          <img src="images/ganaste.jpg"/ align="left">
+          Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
+        </p>
+        <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button>
+      </div>
+           <div class="modal-footer">
+       </div>
+        </div>
+     </div>
+  </div>
+
+
    </body>
 </html>

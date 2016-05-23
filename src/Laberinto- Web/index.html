@@ -83,9 +83,9 @@
 
 
 
-  <!-- Modales -->
+  <!-- MODALES -->
 
-  <!-- Modal de Laberinto -->
+  <!-- Inicio - Acceso Laberinto Modal -->
   <div class="laberintoModal modal" id="accesoLaberintoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -98,14 +98,79 @@
           <img src="images/ganaste.jpg"/ align="left">
           Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
         </p>
-        <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button>
+        <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
+        <button type="button" class="btn btn-mio-jugar btn-lg" data-toggle="modal" data-target="#contenedorModal">Jugar</button>
       </div>
            <div class="modal-footer">
        </div>
         </div>
      </div>
   </div>
+ <!-- Fin - Acceso Laberinto Modal -->
 
+ <!-- Inicio - Laberinto Jugable Modal -->
+ <div class="modal fade" id="contenedorModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header well">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 style="text-align:center;">Laberinto 1</h3>
+          </div>
+         
+         <div id="contenedorInterno">
+          <br></br>
+       
+       <div id="contenedorInternoIzquierdo" class="col-md-9  panel panel-default">
+          
+          <h3>Living</h3>
+
+          <div id="contenedorImagen" class="col-md-6  panel panel-default">
+            <p>
+              <img src="images/ganaste.jpg"/ align="center">
+            </p>
+          </div> 
+          
+          <h4>Acciones</h4>
+          
+          <div id="contenedorInternoDerecho" class="col-md-2  panel panel-default">
+            <ul class="list-group" align="center">
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Agarrar Medias</button> 
+              </li>
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Ir al Patio</button>    
+              </li>
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Usar Llave</button>    
+              </li>
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Agarrar Roca</button>    
+              </li>
+            </ul>
+          </div>
+    </div>
+
+        <!--CONTENEDOR INVENTARIO -->
+        <div id="contenedorInventario" class="col-md-2  panel panel-default" align="center">
+          <div class="form-group">
+            <h4>Inventario</h4>
+            <select multiple class="form-control" id="sel2">
+              <option>Llave</option>
+              <option>Soga</option>
+              <option>Revolver</option>
+              <option>Maza</option>
+              <option>Antorcha</option>
+            </select>
+          </div>
+        <button type="button" class="btn btn-success btn-acciones row">Tirar</button>
+        </div>        
+
+         <div class="modal-footer">
+        </div>
+      </div>
+   </div>
+</div>
+ <!-- Fin - Laberinto Jugable Modal -->
 
    </body>
 </html>

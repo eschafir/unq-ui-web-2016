@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+   <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE-edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+
+    <!--El siguiente script hace que el modal se muestre apenas se ingresa a la pantalla-->
+    <script>
+      $(document).ready(function()
+      {
+         $("#contenedorModal").modal("show");
+      });
+    </script>
+
+    <script>
+      function mostrarVentanaModal() {
+         $("#contenedorModal").modal("show");
+      });
+
+    </script>
+
+    <script>
+      function cerrarVentanaGanastaModal() {
+        $('#contenedorModal').modal('hide');
+    }
+  </script>
+   </head>
+   
+   <body>
+   <div class="modal fade" id="contenedorModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header well">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 style="text-align:center;">Laberinto 1</h3>
+          </div>
+         
+         <div id="contenedorInterno">
+          <br></br>
+       
+       <div id="contenedorInternoIzquierdo" class="col-md-9  panel panel-default">
+          
+          <h3>Living</h3>
+
+          <div id="contenedorImagen" class="col-md-6  panel panel-default">
+            <p>
+              <img src="images/ganaste.jpg"/ align="center">
+            </p>
+          </div> 
+          
+          <h4>Acciones</h4>
+          
+          <div id="contenedorInternoDerecho" class="col-md-2  panel panel-default">
+            <ul class="list-group" align="center">
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Agarrar Medias</button> 
+              </li>
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Ir al Patio</button>    
+              </li>
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Usar Llave</button>    
+              </li>
+              <li>
+                <button type="button" class="btn btn-success btn-acciones row">Agarrar Roca</button>    
+              </li>
+            </ul>
+          </div>
+    </div>
+
+        <!--CONTENEDOR INVENTARIO -->
+        <div id="contenedorInventario" class="col-md-2  panel panel-default" align="center">
+          <div class="form-group">
+            <h4>Inventario</h4>
+            <select multiple class="form-control" id="sel2">
+              <option>Llave</option>
+              <option>Soga</option>
+              <option>Revolver</option>
+              <option>Maza</option>
+              <option>Antorcha</option>
+            </select>
+          </div>
+        <button type="button" class="btn btn-success btn-acciones row">Tirar</button>
+        </div>        
+
+         <div class="modal-footer">
+        </div>
+      </div>
+   </div>
+</div>
+   </body>
+</html>

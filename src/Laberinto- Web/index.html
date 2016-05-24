@@ -9,45 +9,25 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 	  <script src="html/js/jquery-1.12.3.min.js"></script>
     <script src="html/js/bootstrap.min.js"></script>
+    <script src="js/funciones.js"></script>
     <!-- Agregamos angularJS-->
     <script src="js/angular.min.js"></script>
     <script src="js/myAppController.js"></script>
     <script src="js/controller.js"></script>
     <title>Aca hay gato encerrado</title>
-
-    <!-- Script que expande elementos de lista -->
-    <script>
-      function expandir() {
-        for(x = 0; x < 50; x++) {
-          window.moveTo(screen.ancho * -(x - 50) / 100, screen.alto * -(x - 50) / 100);
-          window.resizeTo(screen.ancho * x / 50, screen.alto * x / 50);
-    }
-          window.moveTo(0,0);
-          window.resizeTo(screen.ancho, screen.alto);
-}
-    </script>  
-
-    <script type="text/javascript">
-    function cambiarColor(x)
-    {
-      if(x.style.background=="lightsteelblue")
-      {
-          x.style.background="#fff";
-      } else{
-          x.style.background="lightsteelblue";
-      }
-      return false;
-      }
-    </script>
-   
    </head>
 
    <body class="container" ng-app="laberintoApplication">
-<div ng-controller="laberintoController">
+
+  <script type="text/javascript">
+    // Acá van las funciones de javascript que voy a usar
+  </script>
+
+    <div ng-controller="laberintoController">
    <!-- Cabecera -->
               <div id="header" class="row">
                 <div class="col-md-12 header panel panel-default row">
-                  <img class="catimg" src="images/gato-encerrado.jpg" width="80px" height="80px">   
+                  <img id="catImg" src="images/gato-encerrado.jpg">   
                     <span class="gametitle">Acá hay gato encerrado</span>
                   <div id="iconUser2">
 					<img src="images/iconUser2.jpg">
@@ -77,7 +57,7 @@
          <img class="flecha" src="images/flechaSeleccionLaberintos.jpg">
         </section>
   </div>
-        <footer id="footer" class="col-md-8 col-md-offset-2 well well-lg" align="center">
+        <footer id="footer" class="col-md-8 col-md-offset-2 well well-lg">
             <h5>Construcción de Interfaces de Usuarios: 2016</h5>
             <h4>Grupo Nro. 5 - <strong>Alumnos: Schafir Esteban, Gonzalez Octavio, Presa Federico.</strong></h4>
         </footer>
@@ -93,7 +73,7 @@
         <div class="modal-content">
            <div class="modal-header well">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h3 class="titulo">Laberinto 1</h3>
+              <h3 class="style-header">Laberinto 1</h3>
            </div>
            <div id="contenedorInterno" class="modal-body col-md-8 col-md-offset-2 well well-lg">
         <p>
@@ -101,7 +81,7 @@
           Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
         </p>
         <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
-        <button type="button" class="btn btn-mio-jugar btn-lg" data-toggle="modal" data-target="#contenedorModal">Jugar</button>
+        <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal">Jugar</button>
       </div>
            <div class="modal-footer">
        </div>
@@ -111,12 +91,12 @@
  <!-- Fin - Acceso Laberinto Modal -->
 
  <!-- Inicio - Laberinto Jugable Modal -->
- <div class="modal" id="contenedorModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+ <div id="contenedorModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
    <div class="modal-dialog modal-lg">
       <div class="modal-content">
          <div class="modal-header well">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3 style="text-align:center;">Laberinto 1</h3>
+            <h3 class="style-header">Laberinto 1</h3>
           </div>
          
          <div id="contenedorInterno">
@@ -128,7 +108,7 @@
 
           <div id="contenedorImagen" class="col-md-6  panel panel-default">
             <p>
-              <img src="images/ganaste.jpg"/ align="center">
+              <img src="images/ganaste.jpg"/>
             </p>
           </div> 
           
@@ -153,10 +133,10 @@
     </div>
 
         <!--CONTENEDOR INVENTARIO -->
-        <div id="contenedorInventario" class="col-md-2  panel panel-default" align="center">
+        <div id="contenedorInventario" class="col-md-2  panel panel-default">
           <div class="form-group">
             <h4>Inventario</h4>
-            <select multiple class="form-control" id="sel2">
+            <select id="selectorInventario" multiple class="form-control">
               <option>Llave</option>
               <option>Soga</option>
               <option>Revolver</option>

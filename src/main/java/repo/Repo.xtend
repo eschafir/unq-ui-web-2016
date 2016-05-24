@@ -12,6 +12,9 @@ import unq_ciu.gatoEncerrado.Item
 import unq_ciu.gatoEncerrado.Jugador
 import unq_ciu.gatoEncerrado.Laberinto
 import unq_ciu.gatoEncerrado.acciones.Usar
+import unq_ciu.gatoEncerrado.acciones.Agarrar
+import unq_ciu.gatoEncerrado.acciones.Salir
+import unq_ciu.gatoEncerrado.acciones.Mover
 
 @Accessors
 class Repo {
@@ -38,8 +41,14 @@ class Repo {
 		var habitaciones = newArrayList()
 		var hab = new Habitacion(1, "Inicial", true, false, "path")
 		var hab1 = new Habitacion(2, "Cocina", false, true, "path2")
-		val accion = new Usar(0, new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
-		hab.agregarAccion(accion)
+		val usar = new Usar(0, new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
+		val agarrar = new Agarrar(1, new Item("Martillo"))
+		val mover = new Mover(5,hab1)
+		val salir = new Salir(3)
+		hab.agregarAccion(usar)
+		hab.agregarAccion(mover)
+		hab.agregarAccion(agarrar)
+		hab1.agregarAccion(salir)
 		habitaciones.add(hab)
 		habitaciones.add(hab1)
 
@@ -55,7 +64,19 @@ class Repo {
 
 		var jugador1 = new Jugador(1, "Player1")
 		var jugador2 = new Jugador(2, "Player2")
-		jugador1.inventario = #[
+		jugador2.habitacion = habitaciones.get(0)
+		var jugador3 = new Jugador(3,"Jugador 3", habitaciones.get(0))
+		jugador1.inventario = newArrayList()
+		/**
+		 * 
+		 L#[
+			new Item("Mochila", "Mochila grande"),
+			new Item("Pila", "Pila AA"),
+			new Item("Binocular", "Militar")
+		]
+		 */
+		
+		jugador3.inventario = #[
 			new Item("Mochila", "Mochila grande"),
 			new Item("Pila", "Pila AA"),
 			new Item("Binocular", "Militar")
@@ -63,9 +84,11 @@ class Repo {
 
 		jugador1.laberintos = laberintosMinimizados.tail.toList
 		jugador2.laberintos = laberintosMinimizados
+		jugador3.laberintos = laberintosMinimizados
 
 		listaJugadores.add(jugador1)
 		listaJugadores.add(jugador2)
+		listaJugadores.add(jugador3)
 
 		return listaJugadores
 	}
@@ -123,6 +146,10 @@ class Repo {
 			lista.add(acc)
 		}
 		return lista
+	}
+	
+	def Laberinto traerLaberinto(Habitacion h){
+		laberintosMinimizados.findFirst[it.habitaciones.contains(h)]
 	}
 
 }

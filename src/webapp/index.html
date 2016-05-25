@@ -39,11 +39,11 @@
         <aside class="col-md-3 panel panel-default" id="aside">
           <div id="menuLaberintos panel panel-default">
             <ul class="list-group" align="left">
-              <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
+              <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in LaberintoCtrl.laberintos">
                 <div>
                   <img src="images/laberinto1.jpg" />
                   <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#accesoLaberintoModal" > {{laberinto.nombre}}</button> -->
-                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)"> {{laberinto.nombre}}</button> 
+                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)"> {{LaberintoCtrl.laberinto.nombre}}</button> 
                   <!-- {{LaberintoCtrl.laberintoSeleccionado.nombre}} -->
                   <!-- {{laberintoController.todosLosLaberintos}} -->
                   <!-- En la línea de arriba se debería llamar al servicios que me da los laberintos -->

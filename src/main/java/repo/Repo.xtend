@@ -39,8 +39,8 @@ class Repo {
 
 	def getHabitaciones() {
 		var habitaciones = newArrayList()
-		var hab = new Habitacion(1, "Inicial", true, false, "path")
-		var hab1 = new Habitacion(2, "Cocina", false, true, "path2")
+		var hab = new Habitacion(0, "Inicial", true, false, "path")
+		var hab1 = new Habitacion(1, "Cocina", false, true, "path2")
 		val usar = new Usar(0, new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
 		val agarrar = new Agarrar(1, new Item("Martillo"))
 		val mover = new Mover(5,hab1)
@@ -65,7 +65,7 @@ class Repo {
 		var jugador1 = new Jugador(1, "Player1")
 		var jugador2 = new Jugador(2, "Player2")
 		jugador2.habitacion = habitaciones.get(0)
-		var jugador3 = new Jugador(3,"Jugador 3", habitaciones.get(0))
+		var jugador3 = new Jugador(3,"Jugador 3", habitaciones.get(1))
 		jugador1.inventario = newArrayList()
 		/**
 		 * 

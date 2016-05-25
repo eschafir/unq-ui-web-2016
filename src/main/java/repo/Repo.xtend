@@ -36,14 +36,15 @@ class Repo {
 			new Laberinto(5, "Estación de bomberos", "image5.jpg")
 		]
 	}
+	
 
 	def getHabitaciones() {
 		var habitaciones = newArrayList()
 		var hab = new Habitacion(0, "Inicial", true, false, "path")
 		var hab1 = new Habitacion(1, "Cocina", false, true, "path2")
-		val usar = new Usar(0, new Item("Pala", "Pala de punta"), new Accion(3, "accion consecuencia"))
+		val usar = new Usar(0, new Item("Martillo"), new Accion(3, "accion consecuencia"))
 		val agarrar = new Agarrar(1, new Item("Martillo"))
-		val mover = new Mover(5,hab1)
+		val mover = new Mover(5, hab1)
 		val salir = new Salir(3)
 		hab.agregarAccion(usar)
 		hab.agregarAccion(mover)
@@ -63,10 +64,12 @@ class Repo {
 		var listaJugadores = new ArrayList<Jugador>
 
 		var jugador1 = new Jugador(1, "Player1")
+		jugador1.inventario = newArrayList()
+		jugador1.agregarAlInventario(new Item("Martillo"))
 		var jugador2 = new Jugador(2, "Player2")
 		jugador2.habitacion = habitaciones.get(0)
-		var jugador3 = new Jugador(3,"Jugador 3", habitaciones.get(1))
-		jugador1.inventario = newArrayList()
+		var jugador3 = new Jugador(3, "Jugador 3", habitaciones.get(0))
+
 		/**
 		 * 
 		 L#[
@@ -75,7 +78,6 @@ class Repo {
 			new Item("Binocular", "Militar")
 		]
 		 */
-		
 		jugador3.inventario = #[
 			new Item("Mochila", "Mochila grande"),
 			new Item("Pila", "Pila AA"),
@@ -147,8 +149,8 @@ class Repo {
 		}
 		return lista
 	}
-	
-	def Laberinto traerLaberinto(Habitacion h){
+
+	def Laberinto traerLaberinto(Habitacion h) {
 		laberintosMinimizados.findFirst[it.habitaciones.contains(h)]
 	}
 

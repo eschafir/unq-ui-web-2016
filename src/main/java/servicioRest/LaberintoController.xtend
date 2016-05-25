@@ -46,7 +46,7 @@ class LaberintoController {
 		val laberinto = repo.getLaberinto(idLab)
 
 		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
-		jugador.iniciarJuego(laberinto)
+		//jugador.iniciarJuego(laberinto)
 		ok(respuesta.toJson)
 	}
 

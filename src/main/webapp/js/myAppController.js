@@ -1,17 +1,27 @@
-var app = angular.module("laberintoApplication", []);
+var app = angular.module("laberintoApplication", ['ngResource']);
 
-app.controller('laberintoController', function(Laberintos) {
+app.factory('LaberintoS', function($resource) {
+    return $('/laberintos/:id', {'id': '@id'}, {
+    	'todosLosLaberintos': { method: 'GET', isArray: true}
+    });
+});
+
+
+app.controller('laberintoController', function($scope, LaberintoS, $http) {
 	/*
 	 * La línea de abajo significa que los datos están harckodeados, cuando
 	 * tenga el servicio se tiene que borrar
 	 */
-	$scope.laberintos = [{nombre: 'Laberinto 1'},{nombre: 'Laberinto 2'},{nombre:"Laberinto 3"}];
+	// $scope.laberintos = [{nombre: 'Laberinto 1'},{nombre: 'Laberinto 2'},{nombre:"Laberinto 3"}];
 	/*
 	 * Al principio en la aplicación no tengo laberintos, la línea tiene que
 	 * estar descomentada
 	 */
-	//$scope.laberintos = [];
-
+	$http.get("laberintos/1").success(function(data) {
+		$scope.laberintos = data
+	}).error(errorHandler);
+	
+	 	
 	// VER DETALLE
 	this.laberintoSeleccionado = null;
 

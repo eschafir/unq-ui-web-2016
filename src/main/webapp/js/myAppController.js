@@ -5,13 +5,13 @@ app.controller('laberintoController', function(Laberintos) {
 	 * La línea de abajo significa que los datos están harckodeados, cuando
 	 * tenga el servicio se tiene que borrar
 	 */
-	// $scope.laberintos = [{nombre: 'Laberinto 1'},{nombre: 'laberinto
+	$scope.laberintos = [{nombre: 'Laberinto 1'},{nombre: 'laberinto
 	// 2'},{nombre:"Laberinto 3"}];
 	/*
 	 * Al principio en la aplicación no tengo laberintos, la línea tiene que
 	 * estar descomentada
 	 */
-	$scope.laberintos = [];
+	//$scope.laberintos = [];
 
 	// VER DETALLE
 	this.laberintoSeleccionado = null;

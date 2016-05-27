@@ -21,6 +21,80 @@ class Repo {
 
 	new() {
 	}
+	
+	//La lista de items de todo el repo
+	def getListaItems(){
+		
+		var Item martillo = new Item("Martillo", "Martillo comun")
+		var Item llaveCocina = new Item("Llave", "Llave de la cocina")
+		var Item pala = new Item("Pala", "Pala ancha")
+		var Item cuchillo = new Item("Cuchillo", "Cuchillo de cocina")
+		var Item pistola = new Item("Pistola", "Pistola")
+		
+		var items = #[martillo, llaveCocina, pala, cuchillo, pistola]
+		items
+	}
+	
+	//La lista de acciones de todo el repo
+	def List<Accion> getListaAcciones(){
+		
+		val agarrar1 = new Agarrar(0, listaItems.get(0))
+		val agarrar2 = new Agarrar(1, listaItems.get(1))
+		val agarrar3 = new Agarrar(2, listaItems.get(2))
+		val agarrar4 = new Agarrar(3, listaItems.get(3))
+		val agarrar5 = new Agarrar(4, listaItems.get(4))
+		val mover1 = new Mover(5, habitaciones.get(0))
+		val mover2 = new Mover(6, habitaciones.get(1))
+		val mover3 = new Mover(7, habitaciones.get(2))
+		val mover4 = new Mover(8, habitaciones.get(3))
+		val mover5 = new Mover(9, habitaciones.get(4))
+		val usar1 = new Usar(10, listaItems.get(0), new Accion(16, "Resultado de usar el martillo"))
+		val usar2 = new Usar(11, listaItems.get(1), mover1)
+		val usar3 = new Usar(12, listaItems.get(2), new Accion(17, "Resultado de usar la pala"))
+		val usar4 = new Usar(13, listaItems.get(3), new Accion(18, "Resultado de usar el cuchillo"))
+		val usar5 = new Usar(14, listaItems.get(4), new Accion(19, "Resultado de usar la pistola"))
+		val salir = new Salir(15)
+		
+		var List<Accion> acciones = newArrayList
+		
+		acciones.add(agarrar1)
+		acciones.add(agarrar2)
+		acciones.add(agarrar3)
+		acciones.add(agarrar4)
+		acciones.add(agarrar5)
+		acciones.add(mover1)
+		acciones.add(mover2)
+		acciones.add(mover3)
+		acciones.add(mover4)
+		acciones.add(mover5)
+		acciones.add(usar1)
+		acciones.add(usar2)
+		acciones.add(usar3)
+		acciones.add(usar4)
+		acciones.add(usar5)
+		acciones.add(salir)
+		
+		acciones
+	}
+	
+	def getHabitaciones() {
+		
+		var hab = new Habitacion(0, "Inicial", true, false, "")
+		hab.acciones = #[listaAcciones.get(0), listaAcciones.get(7)]
+		
+		var hab1 = new Habitacion(1, "Cocina", false, true, "")
+		hab1.acciones = #[listaAcciones.get(15)]
+		
+		var hab2 = new Habitacion(2, "Garage", false, false, "")
+		hab2.acciones = #[listaAcciones.get(1)]
+		
+		var hab3 = new Habitacion(3, "Living", false, false, "")
+		var hab4 = new Habitacion(4, "Baño", false, false, "")
+		
+		var habitaciones = #[hab, hab1, hab2, hab3, hab4]
+		habitaciones
+	}
+	
 
 	/**
  	* Este metodo genera los laberintos. Luego es llamado desde el controller.
@@ -36,48 +110,22 @@ class Repo {
 			new Laberinto(5, "Estación de bomberos", "image5.jpg")
 		]
 	}
-	
-
-	def getHabitaciones() {
-		var habitaciones = newArrayList()
-		var hab = new Habitacion(0, "Inicial", true, false, "path")
-		var hab1 = new Habitacion(1, "Cocina", false, true, "path2")
-		val usar = new Usar(0, new Item("Martillo"), new Accion(3, "accion consecuencia"))
-		val agarrar = new Agarrar(1, new Item("Martillo"))
-		val mover = new Mover(5, hab1)
-		val salir = new Salir(3)
-		hab.agregarAccion(usar)
-		hab.agregarAccion(mover)
-		hab.agregarAccion(agarrar)
-		hab1.agregarAccion(salir)
-		habitaciones.add(hab)
-		habitaciones.add(hab1)
-
-		return habitaciones
-	}
 
 	/**
  	* Este metodo genera los jugadores. Luego es llamado desde el controller.
  	*/
 	def listaJugadores() {
 
-		var listaJugadores = new ArrayList<Jugador>
-
+		//Jugador1 con martillo
 		var jugador1 = new Jugador(1, "Player1")
-		jugador1.inventario = newArrayList()
-		jugador1.agregarAlInventario(new Item("Martillo"))
+		jugador1.agregarAlInventario(listaItems.get(0))
+		
+		//Jugador2 en habitacion "Inicial"
 		var jugador2 = new Jugador(2, "Player2")
 		jugador2.habitacion = habitaciones.get(0)
-		var jugador3 = new Jugador(3, "Jugador 3", habitaciones.get(0))
 
-		/**
-		 * 
-		 L#[
-			new Item("Mochila", "Mochila grande"),
-			new Item("Pila", "Pila AA"),
-			new Item("Binocular", "Militar")
-		]
-		 */
+		//Jugador3 en Cocina
+		var jugador3 = new Jugador(3, "Jugador 3", habitaciones.get(1))
 		jugador3.inventario = #[
 			new Item("Mochila", "Mochila grande"),
 			new Item("Pila", "Pila AA"),
@@ -88,11 +136,8 @@ class Repo {
 		jugador2.laberintos = laberintosMinimizados
 		jugador3.laberintos = laberintosMinimizados
 
-		listaJugadores.add(jugador1)
-		listaJugadores.add(jugador2)
-		listaJugadores.add(jugador3)
-
-		return listaJugadores
+		var listaJugadores = #[jugador1, jugador2, jugador3]
+		listaJugadores
 	}
 
 	/**

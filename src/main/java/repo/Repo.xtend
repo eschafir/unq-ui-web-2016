@@ -43,11 +43,11 @@ class Repo {
 		val agarrar3 = new Agarrar(2, listaItems.get(2))
 		val agarrar4 = new Agarrar(3, listaItems.get(3))
 		val agarrar5 = new Agarrar(4, listaItems.get(4))
-		val mover1 = new Mover(5, habitaciones.get(0))
-		val mover2 = new Mover(6, habitaciones.get(1))
-		val mover3 = new Mover(7, habitaciones.get(2))
-		val mover4 = new Mover(8, habitaciones.get(3))
-		val mover5 = new Mover(9, habitaciones.get(4))
+		val mover1 = new Mover(5, new Habitacion(0, "Inicial", true, false, ""))
+		val mover2 = new Mover(6, new Habitacion(1, "Cocina", false, true, ""))
+		val mover3 = new Mover(7, new Habitacion(2, "Garage", false, false, ""))
+		val mover4 = new Mover(8, new Habitacion(3, "Living", false, false, ""))
+		val mover5 = new Mover(9, new Habitacion(4, "Baño", false, false, ""))
 		val usar1 = new Usar(10, listaItems.get(0), new Accion(16, "Resultado de usar el martillo"))
 		val usar2 = new Usar(11, listaItems.get(1), mover1)
 		val usar3 = new Usar(12, listaItems.get(2), new Accion(17, "Resultado de usar la pala"))
@@ -126,11 +126,6 @@ class Repo {
 
 		//Jugador3 en Cocina
 		var jugador3 = new Jugador(3, "Jugador 3", habitaciones.get(1))
-		jugador3.inventario = #[
-			new Item("Mochila", "Mochila grande"),
-			new Item("Pila", "Pila AA"),
-			new Item("Binocular", "Militar")
-		]
 
 		jugador1.laberintos = laberintosMinimizados.tail.toList
 		jugador2.laberintos = laberintosMinimizados

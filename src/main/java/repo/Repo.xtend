@@ -31,7 +31,13 @@ class Repo {
 		var Item cuchillo = new Item("Cuchillo", "Cuchillo de cocina")
 		var Item pistola = new Item("Pistola", "Pistola")
 		
-		var items = #[martillo, llaveCocina, pala, cuchillo, pistola]
+		var items = newArrayList
+		
+		items.add(martillo)
+		items.add(llaveCocina)
+		items.add(pala)
+		items.add(cuchillo)
+		items.add(pistola)
 		items
 	}
 	
@@ -80,13 +86,15 @@ class Repo {
 	def getHabitaciones() {
 		
 		var hab = new Habitacion(0, "Inicial", true, false, "")
-		hab.acciones = #[listaAcciones.get(0), listaAcciones.get(7)]
+		hab.agregarAccion(listaAcciones.get(0))
+		hab.agregarAccion(listaAcciones.get(7))
 		
 		var hab1 = new Habitacion(1, "Cocina", false, true, "")
-		hab1.acciones = #[listaAcciones.get(15)]
+		hab1.agregarAccion(listaAcciones.get(15))
 		
 		var hab2 = new Habitacion(2, "Garage", false, false, "")
-		hab2.acciones = #[listaAcciones.get(1)]
+		hab2.agregarAccion(listaAcciones.get(1))
+		hab2.agregarAccion(listaAcciones.get(11))
 		
 		var hab3 = new Habitacion(3, "Living", false, false, "")
 		var hab4 = new Habitacion(4, "Baño", false, false, "")
@@ -116,13 +124,12 @@ class Repo {
  	*/
 	def listaJugadores() {
 
-		//Jugador1 con martillo
+		//Jugador1
 		var jugador1 = new Jugador(1, "Player1")
-		jugador1.agregarAlInventario(listaItems.get(0))
 		
-		//Jugador2 en habitacion "Inicial"
-		var jugador2 = new Jugador(2, "Player2")
-		jugador2.habitacion = habitaciones.get(0)
+		//Jugador2 en "Garage" con llave de la cocina
+		var jugador2 = new Jugador(2, "Player2", habitaciones.get(2))
+		jugador2.agregarAlInventario(listaItems.get(1))
 
 		//Jugador3 en Cocina
 		var jugador3 = new Jugador(3, "Jugador 3", habitaciones.get(1))

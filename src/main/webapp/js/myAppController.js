@@ -19,14 +19,15 @@ app.controller('laberintoController', function($scope, LaberintoS, $http) {
 	 */
 	$http.get("laberintos/1").success(function(data) {
 		$scope.laberintos = data
+		console.log(data);
 	}).error(errorHandler);
 	
 	 	
 	// VER DETALLE
-	this.laberintoSeleccionado = null;
+	// this.laberintoSeleccionado = null;
 
 	this.verDetalle = function(laberinto) {
-		this.laberintoSeleccionado = laberinto;
+		$scope.laberintoSeleccionado = laberinto;
 		$("#accesoLaberintoModal").modal({});
 	};
 

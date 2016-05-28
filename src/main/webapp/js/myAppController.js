@@ -6,8 +6,14 @@ app.factory('LaberintoS', function($resource) {
     });
 });
 
+app.factory('HabitacioneS', function($resource) {
+    return $('/iniciarLaberinto/:uid/:lid', {'uid': '@uid'}, {'lid': '@lid'} , {
+    	'todosLasHabitaciones': { method: 'GET', isArray: true}
+    });
+});
 
-app.controller('laberintoController', function($scope, LaberintoS, $http) {
+
+app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS, $http) {
 	/*
 	 * La línea de abajo significa que los datos están harckodeados, cuando
 	 * tenga el servicio se tiene que borrar
@@ -17,19 +23,40 @@ app.controller('laberintoController', function($scope, LaberintoS, $http) {
 	 * Al principio en la aplicación no tengo laberintos, la línea tiene que
 	 * estar descomentada
 	 */
-	$http.get("laberintos/1").success(function(data) {
-		$scope.laberintos = data
+
+	 //$scope.habitaciones = [{nombre: 'habi1'}, {nombre: 'habi2'} ];
+	//$scope.habitaciones = [];
+	 $scope.idUsuario = "1";
+	
+	$http.get("laberintos/"+ $scope.idUsuario).success(function(data) {
+		
+		$scope.laberintos = data;
 		console.log(data);
 	}).error(errorHandler);
-	
-	 	
-	// VER DETALLE
-	// this.laberintoSeleccionado = null;
+
+	$scope.iniciarLaberinto = function(idLaberinto) {
+		$http.get("iniciarLaberinto/"+ $scope.idUsuario +"/" + idLaberinto).success(function(data) {
+			$scope.habitaciones = data.laberinto.habitaciones;
+			$scope.habitacionActual = $scope.habitaciones[0];
+			console.log(data);
+		}).error(errorHandler);
+	}
+
 
 	this.verDetalle = function(laberinto) {
 		$scope.laberintoSeleccionado = laberinto;
 		$("#accesoLaberintoModal").modal({});
+
+		console.log($scope.laberintoSeleccionado);
 	};
+
+	// function obtenerAcciones(habitacion) {
+ //    	libros.forEach(function(libro){
+ //    		if(self.autores.indexOf(libro.autor) == -1) {
+ //    			this.acciones.push(accion);
+ //    		};
+ //    	});
+ //    };
 
 	function errorHandler(error) {
 		this.notificarError(error.data);

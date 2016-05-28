@@ -79,7 +79,7 @@
             Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
             </p>
             <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
-            <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal">Jugar</button>
+            <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal" ng-click="iniciarLaberinto(laberintoSeleccionado.laberintoId)">Jugar</button>
           </div>
           <div class="modal-footer">
           </div>
@@ -115,16 +115,7 @@
           <div id="contenedorInternoDerecho" class="col-md-2  panel panel-default">
             <ul class="list-group" align="center">
               <li>
-                <button type="button" class="btn btn-success btn-acciones row">Agarrar Medias</button> 
-              </li>
-              <li>
-                <button type="button" class="btn btn-success btn-acciones row">Ir al Patio</button>    
-              </li>
-              <li>
-                <button type="button" class="btn btn-success btn-acciones row">Usar Llave</button>    
-              </li>
-              <li>
-                <button type="button" class="btn btn-success btn-acciones row">Agarrar Roca</button>    
+                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones">{{accion.nombre}}</button> 
               </li>
             </ul>
           </div>

@@ -111,7 +111,7 @@ class Repo {
 
 		#[
 			new Laberinto(0, "Testing", "path de imagen", habitaciones),
-			new Laberinto(1, "Casa abandonada", "image1.jpg"),
+			new Laberinto(1, "Casa abandonada", "image1.jpg", habitaciones),
 			new Laberinto(2, "Museo", "image2.jpg"),
 			new Laberinto(3, "Plaza", "image3.jpg"),
 			new Laberinto(4, "Hospital", "image4.jpg"),

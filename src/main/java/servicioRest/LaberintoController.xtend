@@ -49,6 +49,22 @@ class LaberintoController {
 		//jugador.iniciarJuego(laberinto)
 		ok(respuesta.toJson)
 	}
+	
+	@Get("/iniciarLaberinto/:uid/:lid")
+	def mostrarDatosLaberinto2() {
+		response.contentType = "application/json"
+
+		val idJugador = Long.parseLong(uid)
+		val idLab = Long.parseLong(lid)
+
+		var repo = new Repo()
+		val jugador = repo.getJugador(idJugador)
+		val laberinto = repo.getLaberinto(idLab)
+
+		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
+		//jugador.iniciarJuego(laberinto)
+		ok(respuesta.toJson)
+	}
 
 	@Get("/realizarAccion")
 	def mostrarDatosAccionRealizada(String uid, String hid, String aid) {

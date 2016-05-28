@@ -17,40 +17,19 @@ app.controller('laberintoController', function($scope, LaberintoS, $http) {
 	 * Al principio en la aplicación no tengo laberintos, la línea tiene que
 	 * estar descomentada
 	 */
-
-
 	$http.get("laberintos/1").success(function(data) {
 		$scope.laberintos = data
 		console.log(data);
 	}).error(errorHandler);
 	
+	 	
+	// VER DETALLE
+	// this.laberintoSeleccionado = null;
 
 	this.verDetalle = function(laberinto) {
 		$scope.laberintoSeleccionado = laberinto;
 		$("#accesoLaberintoModal").modal({});
 	};
-
-
-    function obtenerHabitaciones(laberinto) {
-    		var index;
-			$scope.habitaciones = [];
-			
-			for (index = 0; index < laberinto.habitaciones.length; ++index) {
-
-    			$scope.habitaciones.push(aca iria cada habitacion);
-    	}		
-    }
-
-	function obtenerHabitacionInicial(habitaciones) {
-    	$scope.habitacionInicial;
-
-    	for (index = 0; index < habitaciones.length; ++index) {
-
-    			if(habitaciones.esInicial[index] == true) {
-    			$scope.habitacionInicial = index;
-    		};
-    	};		
-    };    
 
 	function errorHandler(error) {
 		this.notificarError(error.data);

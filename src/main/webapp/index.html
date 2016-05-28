@@ -32,40 +32,36 @@
                   <img id="catImg" src="images/gato-encerrado.jpg">   
                     <span class="gametitle">Acá hay gato encerrado</span>
                   <div id="iconUser2">
-					<img src="images/iconUser2.jpg">
-					<h5>usuario:</h5>
-				  </div>
+					         <img src="images/iconUser2.jpg">
+					         <h5>usuario:</h5>
+				          </div>
                 </div>
               </div>
-  <div class="row">
-        <aside class="col-md-3 panel panel-default" id="aside">
-          <div id="menuLaberintos panel panel-default">
-            <ul class="list-group" align="left">
-              <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
-                <div>
-                  <img src="images/laberinto1.jpg" />
-                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)">{{laberinto.nombre}}</button> 
-                </div>
-              </li>
-            </ul>  
-            </div>
-        </aside>
+              <div class="row">
+                <aside class="col-md-3 panel panel-default" id="aside">
+                <div id="menuLaberintos panel panel-default">
+                <ul class="list-group" align="left">
+                  <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
+                  <div>
+                    <img src="images/laberinto1.jpg" />
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)">{{laberinto.nombre}}</button> 
+                  </div>
+                  </li>
+                </ul>  
+              </div>
+                </aside>
 
-        <section  id="seccion" class="col-md-8 col-md-offset-1 panel panel-default">
-          
-          <div id="tituloSeleccion" class="col-md-8 col-md-offset-2 well well-lg">
-            <h2>Selecciona un Laberinto</h2>
-        </div> 
-         <img class="flecha" src="images/flechaSeleccionLaberintos.jpg">
-        </section>
-  </div>
-        <footer id="footer" class="col-md-8 col-md-offset-2 well well-lg">
-            <h5>Construcción de Interfaces de Usuarios: 2016</h5>
-            <h4>Grupo Nro. 5 - <strong>Alumnos: Schafir Esteban, Gonzalez Octavio, Presa Federico.</strong></h4>
-        </footer>
-        </div>
-
-
+              <section  id="seccion" class="col-md-8 col-md-offset-1 panel panel-default">
+              <div id="tituloSeleccion" class="col-md-8 col-md-offset-2 well well-lg">
+                <h2>Selecciona un Laberinto</h2>
+              </div> 
+              <img class="flecha" src="images/flechaSeleccionLaberintos.jpg">
+              </section>
+              </div>
+              <footer id="footer" class="col-md-8 col-md-offset-2 well well-lg">
+                <h5>Construcción de Interfaces de Usuarios: 2016</h5>
+                <h4>Grupo Nro. 5 - <strong>Alumnos: Schafir Esteban, Gonzalez Octavio, Presa Federico.</strong></h4>
+              </footer>
 
   <!-- MODALES -->
 
@@ -75,18 +71,18 @@
         <div class="modal-content">
            <div class="modal-header well">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h3 class="style-header">{{LaberintoCtrl.laberintoSeleccionado.nombre}}</h3>
+              <h3 class="style-header">{{laberintoSeleccionado.nombre}}</h3>
            </div>
            <div id="contenedorInterno" class="modal-body col-md-8 col-md-offset-2 well well-lg">
-        <p>
-          <img src="images/ganaste.jpg"/ align="left">
-          Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
-        </p>
-        <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
-        <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal">Jugar</button>
-      </div>
-           <div class="modal-footer">
-       </div>
+            <p>
+            <img src="images/ganaste.jpg"/ align="left">
+            Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
+            </p>
+            <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
+            <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal">Jugar</button>
+          </div>
+          <div class="modal-footer">
+          </div>
         </div>
      </div>
   </div>
@@ -153,6 +149,7 @@
         </div>
       </div>
    </div>
+  </div>
 </div>
  <!-- Fin - Laberinto Jugable Modal -->
 

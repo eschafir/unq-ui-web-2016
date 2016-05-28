@@ -126,11 +126,7 @@
           <div class="form-group">
             <h4>Inventario</h4>
             <select id="selectorInventario" multiple class="form-control">
-              <option>Llave</option>
-              <option>Soga</option>
-              <option>Revolver</option>
-              <option>Maza</option>
-              <option>Antorcha</option>
+              <option ng-repeat="item in inventarioActual">{{item.nombre}}</option>
             </select>
           </div>
         <button type="button" class="btn btn-success btn-acciones row">Tirar</button>

@@ -14,19 +14,10 @@ app.factory('HabitacioneS', function($resource) {
 
 
 app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS, $http) {
-	/*
-	 * La línea de abajo significa que los datos están harckodeados, cuando
-	 * tenga el servicio se tiene que borrar
-	 */
+	
 	// $scope.laberintos = [{nombre: 'Laberinto 1'},{nombre: 'Laberinto 2'},{nombre:"Laberinto 3"}];
-	/*
-	 * Al principio en la aplicación no tengo laberintos, la línea tiene que
-	 * estar descomentada
-	 */
 
-	 //$scope.habitaciones = [{nombre: 'habi1'}, {nombre: 'habi2'} ];
-	//$scope.habitaciones = [];
-	 $scope.idUsuario = "1";
+	$scope.idUsuario = "1";
 	
 	$http.get("laberintos/"+ $scope.idUsuario).success(function(data) {
 		
@@ -38,10 +29,10 @@ app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS,
 		$http.get("iniciarLaberinto/"+ $scope.idUsuario +"/" + idLaberinto).success(function(data) {
 			$scope.habitaciones = data.laberinto.habitaciones;
 			$scope.habitacionActual = $scope.habitaciones[0];
+			$scope.inventarioActual = [{nombre: 'Martillo'},{nombre: 'Serrucho'},{nombre:"Llave"}];
 			console.log(data);
 		}).error(errorHandler);
 	}
-
 
 	this.verDetalle = function(laberinto) {
 		$scope.laberintoSeleccionado = laberinto;
@@ -49,14 +40,6 @@ app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS,
 
 		console.log($scope.laberintoSeleccionado);
 	};
-
-	// function obtenerAcciones(habitacion) {
- //    	libros.forEach(function(libro){
- //    		if(self.autores.indexOf(libro.autor) == -1) {
- //    			this.acciones.push(accion);
- //    		};
- //    	});
- //    };
 
 	function errorHandler(error) {
 		this.notificarError(error.data);

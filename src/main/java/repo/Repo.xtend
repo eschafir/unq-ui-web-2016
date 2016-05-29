@@ -45,33 +45,33 @@ class Repo {
 	def getHabitaciones() {
 
 		//Habitaciones de casa abandonada
-		var entrada = new Habitacion(0, "Entrada", true, false, "")
-		var cocina = new Habitacion(1, "Cocina", false, true, "")
-		var garage = new Habitacion(2, "Garage", false, false, "")
-		var living = new Habitacion(3, "Living", false, false, "")
-		var baño = new Habitacion(4, "Baño", false, false, "")
+		var entrada = new Habitacion(0, "Entrada", true, false, "entrada.jpg")
+		var cocina = new Habitacion(1, "Cocina", false, true, "cocina.jpg")
+		var garage = new Habitacion(2, "Garage", false, false, "garage.jpg")
+		var living = new Habitacion(3, "Living", false, false, "living.jpg")
+		var baño = new Habitacion(4, "Baño", false, false, "bano.jpg")
 
 		//habitaciones de museo
-		var zoologia = new Habitacion(5, "Zoologia", true, false, "")
-		var biologia = new Habitacion(6, "Biologia", false, false, "")
-		var historia = new Habitacion(7, "Historia", false, true, "")
+		var zoologia = new Habitacion(5, "Zoologia", true, false, "zoo.jpg")
+		var biologia = new Habitacion(6, "Biologia", false, false, "biologia.jpg")
+		var historia = new Habitacion(7, "Historia", false, true, "historia.jpg")
 
 		//habitaciones de prision
-		var celda = new Habitacion(8, "Celda", true, false, "")
-		var pasillo = new Habitacion(9, "Pasillo", false, false, "")
-		var salaCentral = new Habitacion(10, "Sala central", false, false, "")
-		var entradaPrision = new Habitacion(11, "Entrada", false, true, "")
+		var celda = new Habitacion(8, "Celda", true, false, "celda.jpg")
+		var pasillo = new Habitacion(9, "Pasillo", false, false, "pasillo.jpg")
+		var salaCentral = new Habitacion(10, "Sala central", false, false, "salaCentral.jpg")
+		var entradaPrision = new Habitacion(11, "Entrada", false, true, "entradaPrision.jpg")
 
 		//habitaciones de hospital
-		var salaInt = new Habitacion(12, "Sala de internacion", true, false, "")
-		var hall = new Habitacion(13, "Hall central", false, true, "")
-		var laboratorio = new Habitacion(14, "Laboratorio", false, false, "")
-		var salaMaquinas = new Habitacion(15, "Sala de maquinas", false, false, "")
+		var salaInt = new Habitacion(12, "Sala de internacion", true, false, "salaInt.jpg")
+		var hall = new Habitacion(13, "Hall central", false, true, "hall.jpg")
+		var laboratorio = new Habitacion(14, "Laboratorio", false, false, "laboratorio.jpg")
+		var salaMaquinas = new Habitacion(15, "Sala de maquinas", false, false, "salaMaquinas.jpg")
 
 		//habitaciones de estacion de bomberos
-		var oficina = new Habitacion(16, "Oficina", true, false, "")
-		var bañoBomberos = new Habitacion(17, "Baño", false, true, "")
-		var vestuario = new Habitacion(18, "Vestuario", false, false, "")
+		var oficina = new Habitacion(16, "Oficina", true, false, "oficina.jpg")
+		var bañoBomberos = new Habitacion(17, "Baño", false, true, "bano.jpg")
+		var vestuario = new Habitacion(18, "Vestuario", false, false, "vestuario.jpg")
 
 		var habitaciones = #[entrada, cocina, garage, living, baño, zoologia, biologia, historia, celda, pasillo,
 			salaCentral, entradaPrision, salaInt, hall, laboratorio, salaMaquinas, oficina, bañoBomberos, vestuario]
@@ -265,7 +265,7 @@ class Repo {
 	def getLaberintosMinimizados() {
 
 		#[
-			new Laberinto(1, "Casa abandonada", "casa.jpg", habsFinalesCasa),
+			new Laberinto(1, "Casa", "casa.jpg", habsFinalesCasa),
 			new Laberinto(2, "Museo", "museo.jpg", habsFinalesMuseo),
 			new Laberinto(3, "Prision", "prision.jpg", habsFinalesPrision),
 			new Laberinto(4, "Hospital", "hospital.jpg", habsFinalesHospital),

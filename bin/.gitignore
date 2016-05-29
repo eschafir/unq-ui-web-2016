@@ -4,7 +4,3 @@
 .classpath
 /src/main/generated-sources
 /target/xtend-gen
-/.gitignore
-/pom.xml
-/src/
-/xtend-gen/

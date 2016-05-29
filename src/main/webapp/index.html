@@ -10,7 +10,7 @@
     
     <script src="html/js/jquery-1.12.3.min.js"></script>
     <script src="html/js/bootstrap.min.js"></script>
-    <script src="js/funciones.js"></script>
+    <!-- <script src="js/funciones.js"></script> -->
     <!-- Agregamos angularJS-->
     <script src="node_modules/angular/angular.js"></script>
 	  <script src="node_modules/angular-resource/angular-resource.js"></script>
@@ -43,7 +43,7 @@
                 <ul class="list-group" align="left">
                   <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
                   <div>
-                    <img src="images/laberinto1.jpg" />
+                    <!-- <img ng-src="images/{{laberinto.path}}.jpg" /> -->
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)">{{laberinto.nombre}}</button> 
                   </div>
                   </li>
@@ -75,8 +75,8 @@
            </div>
            <div id="contenedorInterno" class="modal-body col-md-8 col-md-offset-2 well well-lg">
             <p>
-            <img src="images/ganaste.jpg"/ align="left">
-            Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
+            <img ng-src="images/{{laberintoSeleccionado.path}}"/ align="left">
+            Estas seguro que deseas jugar <p>{{laberintoSeleccionado.nombre}}?</p>
             </p>
             <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
             <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal" ng-click="iniciarLaberinto(laberintoSeleccionado.laberintoId)">Jugar</button>

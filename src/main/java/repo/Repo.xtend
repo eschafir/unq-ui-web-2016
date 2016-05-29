@@ -37,14 +37,10 @@ class Repo {
 		var palanca = new Item("Palanca", "Palanca")
 		var destornillador = new Item("Destornillador", "Destornillador")
 
-		var items = #[martillo, llaveCocina,
-					 pala, cuchillo,
-					 pistola,llaveEntradaPrision,
-					 bisturi, tuboGas, llaveLabo, 
-					 palanca, destornillador]
+		var items = #[martillo, llaveCocina, pala, cuchillo, pistola, llaveEntradaPrision, bisturi, tuboGas, llaveLabo,
+			palanca, destornillador]
 		items
 	}
-
 
 	def getHabitaciones() {
 
@@ -59,29 +55,26 @@ class Repo {
 		var zoologia = new Habitacion(5, "Zoologia", true, false, "")
 		var biologia = new Habitacion(6, "Biologia", false, false, "")
 		var historia = new Habitacion(7, "Historia", false, true, "")
-		
+
 		//habitaciones de prision
 		var celda = new Habitacion(8, "Celda", true, false, "")
-		var pasillo = new Habitacion(9, "Pasillo", false, false,"")
+		var pasillo = new Habitacion(9, "Pasillo", false, false, "")
 		var salaCentral = new Habitacion(10, "Sala central", false, false, "")
 		var entradaPrision = new Habitacion(11, "Entrada", false, true, "")
-		
+
 		//habitaciones de hospital
 		var salaInt = new Habitacion(12, "Sala de internacion", true, false, "")
 		var hall = new Habitacion(13, "Hall central", false, true, "")
 		var laboratorio = new Habitacion(14, "Laboratorio", false, false, "")
 		var salaMaquinas = new Habitacion(15, "Sala de maquinas", false, false, "")
-		
+
 		//habitaciones de estacion de bomberos
 		var oficina = new Habitacion(16, "Oficina", true, false, "")
 		var bañoBomberos = new Habitacion(17, "Baño", false, true, "")
 		var vestuario = new Habitacion(18, "Vestuario", false, false, "")
-				
-		var habitaciones = #[entrada, cocina, garage, living, baño,
-							zoologia, biologia, historia,
-							celda, pasillo, salaCentral, entradaPrision,
-							salaInt, hall, laboratorio, salaMaquinas,
-							oficina, bañoBomberos, vestuario]
+
+		var habitaciones = #[entrada, cocina, garage, living, baño, zoologia, biologia, historia, celda, pasillo,
+			salaCentral, entradaPrision, salaInt, hall, laboratorio, salaMaquinas, oficina, bañoBomberos, vestuario]
 		habitaciones
 	}
 
@@ -93,30 +86,30 @@ class Repo {
 		}
 		return habCasa
 	}
-	
-	def habsFinalesCasa(){
+
+	def habsFinalesCasa() {
 		var habFinales = habitacionesCasa
-		
+
 		val moverGarage = new Mover(1, habFinales.get(2))
 		val moverLiving = new Mover(4, habFinales.get(3))
 		val moverCocina = new Mover(6, habFinales.get(1))
 		val usarLlaveCoc = new Usar(5, listaItems.get(1), moverCocina)
 		val usarMartillo = new Usar(7, listaItems.get(0), moverCocina)
-		
+
 		//Entrada: Agarrar(Martillo), Mover(Garage)
 		habFinales.get(0).agregarAccion(new Agarrar(0, listaItems.get(0)))
 		habFinales.get(0).agregarAccion(moverGarage)
-		
+
 		//Cocina: Salir
 		habFinales.get(1).agregarAccion(new Salir(2))
-		
+
 		//Garage: Agarrar(llave cocina), Mover(Living)
 		habFinales.get(2).agregarAccion(new Agarrar(3, listaItems.get(1)))
 		habFinales.get(2).agregarAccion(moverLiving)
-		
+
 		//Living: Usar(llave cocina) ---> Mover(cocina)
 		habFinales.get(3).agregarAccion(usarLlaveCoc)
-		
+
 		//Baño: Usar(martillo) ---> Mover(cocina)
 		habFinales.get(4).agregarAccion(usarMartillo)
 		habFinales
@@ -130,29 +123,29 @@ class Repo {
 		}
 		return habMuseo
 	}
-	
-	def habsFinalesMuseo(){
+
+	def habsFinalesMuseo() {
 		var habFinales = habitacionesMuseo
-		
+
 		var moverBiologia = new Mover(9, habFinales.get(1))
 		var usarPala = new Usar(10, listaItems.get(2), new Agarrar(11, listaItems.get(3)))
 		var moverZoologia = new Mover(12, habFinales.get(2))
 		var usarCuchillo = new Usar(13, listaItems.get(3), new Salir(14))
-		
+
 		//Zoologia: Agarrar(pala), Mover(Biologia)
 		habFinales.get(0).agregarAccion(new Agarrar(8, listaItems.get(2)))
 		habFinales.get(0).agregarAccion(moverBiologia)
-		
+
 		//Biologia: Usar(pala) ----> Agarrar(cuchillo); Mover(Zoologia)
 		habFinales.get(1).agregarAccion(usarPala)
 		habFinales.get(1).agregarAccion(moverZoologia)
-		
+
 		//Zoologia: Usar(cuchillo) ----> Salir
 		habFinales.get(2).agregarAccion(usarCuchillo)
 		habFinales
 	}
-	
-	def habitacionesPrision(){
+
+	def habitacionesPrision() {
 		var habPrision = newArrayList
 		for (var i = 8; i < 12; i++) {
 			var h = habitaciones.get(i)
@@ -160,33 +153,33 @@ class Repo {
 		}
 		habPrision
 	}
-	
-	def habsFinalesPrision(){
+
+	def habsFinalesPrision() {
 		var habFinales = habitacionesPrision
-		
+
 		var moverPasillo = new Mover(15, habFinales.get(1))
 		var moverSalaCentral = new Mover(17, habFinales.get(2))
 		var moverEntradaPrision = new Mover(19, habFinales.get(3))
 		var usarPistola = new Usar(18, listaItems.get(4), moverEntradaPrision)
 		var usarLlaveEntrada = new Usar(21, listaItems.get(5), new Salir(22))
-		
+
 		//Celda: Mover(Pasillo)
 		habFinales.get(0).agregarAccion(moverPasillo)
-		
+
 		//Pasillo: Agarrar(pistola), Mover(SalaCentral)
 		habFinales.get(1).agregarAccion(new Agarrar(16, listaItems.get(4)))
 		habFinales.get(1).agregarAccion(moverSalaCentral)
-		
+
 		//Sala central: Usar(pistola) ---> Mover(entradaPrision); Agarrar(llaveEntradaPrision)
 		habFinales.get(2).agregarAccion(usarPistola)
 		habFinales.get(2).agregarAccion(new Agarrar(20, listaItems.get(5)))
-		
+
 		//Entrada prision: Usar(llaveEntrada) ---> Salir
 		habFinales.get(3).agregarAccion(usarLlaveEntrada)
 		habFinales
 	}
-	
-	def habitacionesHospital(){
+
+	def habitacionesHospital() {
 		var habHospital = newArrayList
 		for (var i = 12; i < 16; i++) {
 			var h = habitaciones.get(i)
@@ -194,37 +187,37 @@ class Repo {
 		}
 		habHospital
 	}
-	
-	def habsFinalesHospital(){
+
+	def habsFinalesHospital() {
 		var habFinales = habitacionesHospital
-		
+
 		var moverHall = new Mover(23, habFinales.get(1))
 		var moverSalaMaquinas = new Mover(25, habFinales.get(3))
 		var moverLaboratorio = new Mover(26, habFinales.get(2))
 		var usarLlaveLabo = new Usar(28, listaItems.get(8), moverHall)
 		var usarTuboGas = new Usar(29, listaItems.get(7), moverLaboratorio)
 		var usarBisturi = new Usar(30, listaItems.get(6), new Salir(31))
-		
+
 		//Sala de internacion: Mover(Hall)
 		habFinales.get(0).agregarAccion(moverHall)
-		
+
 		//Hall central: Agarrar(TuboGas), Mover(SalaMaquinas), Agarrar(llaveLabo)
 		//				Usar(Bisturi) ---> Salir
 		habFinales.get(1).agregarAccion(new Agarrar(24, listaItems.get(7)))
 		habFinales.get(1).agregarAccion(moverSalaMaquinas)
 		habFinales.get(1).agregarAccion(new Agarrar(26, listaItems.get(8)))
 		habFinales.get(1).agregarAccion(usarBisturi)
-		
+
 		//Laboratorio: Agarrar(Bisturi), Usar(LlaveLabo) ---> Mover(Hall)
 		habFinales.get(2).agregarAccion(new Agarrar(27, listaItems.get(6)))
-		habFinales.get(2).agregarAccion(usarLlaveLabo) 
-		
+		habFinales.get(2).agregarAccion(usarLlaveLabo)
+
 		//Sala de maquinas: Usar(tuboGas) ---> Mover(Laboratorio)
 		habFinales.get(3).agregarAccion(usarTuboGas)
 		habFinales
 	}
-	
-	def habitacionesBomberos(){
+
+	def habitacionesBomberos() {
 		var habBomberos = newArrayList
 		for (var i = 16; i < 19; i++) {
 			var h = habitaciones.get(i)
@@ -232,32 +225,32 @@ class Repo {
 		}
 		habBomberos
 	}
-	
-	def habsFinalesBomberos(){
+
+	def habsFinalesBomberos() {
 		var habFinales = habitacionesBomberos
-		
+
 		var moverVestuario = new Mover(33, habFinales.get(2))
 		var usarDestornillador = new Usar(34, listaItems.get(10), new Salir(35))
 		var moverBañoBomberos = new Mover(37, habFinales.get(1))
 		var usarPalanca = new Usar(35, listaItems.get(9), new Agarrar(36, listaItems.get(10)))
-		
+
 		//Oficina: Agarrar(Palanca) , Mover(Vestuario)
 		habFinales.get(0).agregarAccion(new Agarrar(32, listaItems.get(9)))
 		habFinales.get(0).agregarAccion(moverVestuario)
-		
+
 		//Baño: Usar(Destornillador) ---> Salir
 		habFinales.get(1).agregarAccion(usarDestornillador)
-				
+
 		//Vestuario: Usar(Palanca) ---> Agarrar(Destornillador); Mover(Baño)
 		habFinales.get(2).agregarAccion(usarPalanca)
 		habFinales.get(2).agregarAccion(moverBañoBomberos)
-		
+
 		habFinales
 	}
-	
-	def habsFinales(){
+
+	def habsFinales() {
 		var habsFinales = newArrayList
-		
+
 		habsFinales.addAll(habsFinalesCasa)
 		habsFinales.addAll(habsFinalesMuseo)
 		habsFinales.addAll(habsFinalesPrision)
@@ -272,11 +265,11 @@ class Repo {
 	def getLaberintosMinimizados() {
 
 		#[
-			new Laberinto(1, "Casa abandonada", "image1.jpg", habsFinalesCasa),
-			new Laberinto(2, "Museo", "image2.jpg", habsFinalesMuseo),
-			new Laberinto(3, "Prision", "image3.jpg", habsFinalesPrision),
-			new Laberinto(4, "Hospital", "image4.jpg", habsFinalesHospital),
-			new Laberinto(5, "Estación de bomberos", "image5.jpg", habsFinalesBomberos)
+			new Laberinto(1, "Casa abandonada", "casa.jpg", habsFinalesCasa),
+			new Laberinto(2, "Museo", "museo.jpg", habsFinalesMuseo),
+			new Laberinto(3, "Prision", "prision.jpg", habsFinalesPrision),
+			new Laberinto(4, "Hospital", "hospital.jpg", habsFinalesHospital),
+			new Laberinto(5, "Estación de bomberos", "bomberos.jpg", habsFinalesBomberos)
 		]
 	}
 

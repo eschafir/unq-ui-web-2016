@@ -40,6 +40,8 @@ app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS,
 	
 	$scope.realizarAccion = function(idHabitacion, idAccion) {
 		$http.get("realizarAccion/"+ $scope.idUsuario +"/" + idHabitacion + "/" + idAccion).success(function(data) {
+			$scope.habitacionActual = data.habitacion
+			$scope.inventarioActual = data.inventario
 			console.log(data);
 		}).error(errorHandler);
 	}

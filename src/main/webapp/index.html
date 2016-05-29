@@ -43,7 +43,7 @@
                 <ul class="list-group" align="left">
                   <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
                   <div>
-                    <!-- <img ng-src="images/{{laberinto.path}}.jpg" /> -->
+                    <img id="imagenesLab" ng-src="images/{{laberinto.path}}" />
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)">{{laberinto.nombre}}</button> 
                   </div>
                   </li>
@@ -115,7 +115,7 @@
           <div id="contenedorInternoDerecho" class="col-md-2  panel panel-default">
             <ul class="list-group" align="center">
               <li>
-                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones">{{accion.nombre}}</button> 
+                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones" ng-click="realizarAccion(habitacionActual.id, accion.id)">{{accion.nombre}} </button> 
               </li>
             </ul>
           </div>

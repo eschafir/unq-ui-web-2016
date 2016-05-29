@@ -281,7 +281,7 @@ class Repo {
 		//Jugador1
 		var jugador1 = new Jugador(1, "Player1")
 		jugador1.agregarAlInventario(listaItems.get(1))
-		jugador1.agregarAlInventario(listaItems.get(0))
+		//jugador1.agregarAlInventario(listaItems.get(0))
 
 		//Jugador2 en "Garage" con llave de la cocina
 		var jugador2 = new Jugador(2, "Player2", habitaciones.get(2))

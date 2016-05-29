@@ -68,8 +68,8 @@ class LaberintoController {
 		ok(respuesta.toJson)
 	}
 
-	@Get("/realizarAccion")
-	def mostrarDatosAccionRealizada(String uid, String hid, String aid) {
+	@Get("/realizarAccion/:uid/:hid/:aid")
+	def mostrarDatosAccionRealizada() {
 		response.contentType = "application/json"
 
 		val idJugador = Long.parseLong(uid)
@@ -82,7 +82,8 @@ class LaberintoController {
 		val accion = habitacion.buscarAccion(idAccion)
 
 		val resultado = accion.ejecutar(habitacion, jugador)
-
+		
+		
 		ok(resultado.toJson)
 	}
 

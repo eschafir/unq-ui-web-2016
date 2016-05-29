@@ -84,7 +84,7 @@ class Repo {
 
 	def getHabitaciones() {
 
-		var hab = new Habitacion(0, "Inicial", true, false, "")
+		var hab = new Habitacion(0, "Entrada", true, false, "")
 		hab.agregarAccion(listaAcciones.get(0))
 		hab.agregarAccion(listaAcciones.get(1))
 		hab.agregarAccion(listaAcciones.get(2))
@@ -101,8 +101,35 @@ class Repo {
 		var hab3 = new Habitacion(3, "Living", false, false, "")
 		var hab4 = new Habitacion(4, "Baño", false, false, "")
 
-		var habitaciones = #[hab, hab1, hab2, hab3, hab4]
+		var zoologia = new Habitacion(5, "Zoologia", true, false, "")
+		var biologia = new Habitacion(6, "Biologia", false, false, "")
+		var historia = new Habitacion(7, "Historia", false, true, "")
+
+		val moverABiologia = new Mover(biologia)
+		val agarrarReloj = new Agarrar(16, new Item("Reloj"))
+		zoologia.agregarAccion(moverABiologia)
+		zoologia.agregarAccion(agarrarReloj)
+
+		var habitaciones = #[hab, hab1, hab2, hab3, hab4, zoologia, biologia, historia]
 		habitaciones
+	}
+
+	def habitacionesCasa() {
+		var habCasa = newArrayList()
+		for (var i = 0; i < 5; i++) {
+			var h = habitaciones.get(i)
+			habCasa.add(h)
+		}
+		return habCasa
+	}
+
+	def habitacionesMuseo() {
+		var habMuseo = newArrayList()
+		for (var i = 5; i < 8; i++) {
+			var h = habitaciones.get(i)
+			habMuseo.add(h)
+		}
+		return habMuseo
 	}
 
 	/**
@@ -111,9 +138,8 @@ class Repo {
 	def getLaberintosMinimizados() {
 
 		#[
-			new Laberinto(0, "Testing", "path de imagen", habitaciones),
-			new Laberinto(1, "Casa abandonada", "image1.jpg", habitaciones),
-			new Laberinto(2, "Museo", "image2.jpg"),
+			new Laberinto(1, "Casa abandonada", "image1.jpg", habitacionesCasa),
+			new Laberinto(2, "Museo", "image2.jpg", habitacionesMuseo),
 			new Laberinto(3, "Plaza", "image3.jpg"),
 			new Laberinto(4, "Hospital", "image4.jpg"),
 			new Laberinto(5, "Estación de bomberos", "image5.jpg")

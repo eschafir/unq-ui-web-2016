@@ -12,8 +12,14 @@ app.factory('HabitacioneS', function($resource) {
     });
 });
 
+app.factory('AccioneS', function($resource) {
+    return $('/realizarAccion/:uid/:hid/:aid', {'uid': '@uid'}, {'hid': '@hid'} , {'aid': '@aid'} , {
+    	'todosLasHabitaciones': { method: 'GET', isArray: false}
+    });
+});
 
-app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS, $http) {
+
+app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS, AccioneS, $http) {
 
 	$scope.idUsuario = "1";
 	
@@ -28,6 +34,12 @@ app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS,
 			$scope.habitaciones = data.laberinto.habitaciones;
 			$scope.habitacionActual = $scope.habitaciones[0];
 			$scope.inventarioActual = data.laberinto.inventario
+			console.log(data);
+		}).error(errorHandler);
+	}
+	
+	$scope.realizarAccion = function(idHabitacion, idAccion) {
+		$http.get("realizarAccion/"+ $scope.idUsuario +"/" + idHabitacion + "/" + idAccion).success(function(data) {
 			console.log(data);
 		}).error(errorHandler);
 	}

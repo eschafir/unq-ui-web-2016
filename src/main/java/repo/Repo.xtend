@@ -95,6 +95,7 @@ class Repo {
 		val moverCocina = new Mover(6, habFinales.get(1))
 		val usarLlaveCoc = new Usar(5, listaItems.get(1), moverCocina)
 		val usarMartillo = new Usar(7, listaItems.get(0), moverCocina)
+		val moverEntrada = new Mover(8, habFinales.get(0))
 
 		//Entrada: Agarrar(Martillo), Mover(Garage)
 		habFinales.get(0).agregarAccion(new Agarrar(0, listaItems.get(0)))
@@ -102,10 +103,12 @@ class Repo {
 
 		//Cocina: Salir
 		habFinales.get(1).agregarAccion(new Salir(2))
+		habFinales.get(1).agregarAccion(new Salir(2))
 
 		//Garage: Agarrar(llave cocina), Mover(Living)
 		habFinales.get(2).agregarAccion(new Agarrar(3, listaItems.get(1)))
 		habFinales.get(2).agregarAccion(moverLiving)
+		habFinales.get(2).agregarAccion(new Mover(20,new Habitacion("Test",false,false)))
 
 		//Living: Usar(llave cocina) ---> Mover(cocina)
 		habFinales.get(3).agregarAccion(usarLlaveCoc)
@@ -280,7 +283,7 @@ class Repo {
 
 		//Jugador1
 		var jugador1 = new Jugador(1, "Player1")
-		jugador1.agregarAlInventario(listaItems.get(1))
+		//jugador1.agregarAlInventario(listaItems.get(1))
 		//jugador1.agregarAlInventario(listaItems.get(0))
 
 		//Jugador2 en "Garage" con llave de la cocina

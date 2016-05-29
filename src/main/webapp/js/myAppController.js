@@ -14,8 +14,6 @@ app.factory('HabitacioneS', function($resource) {
 
 
 app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS, $http) {
-	
-	// $scope.laberintos = [{nombre: 'Laberinto 1'},{nombre: 'Laberinto 2'},{nombre:"Laberinto 3"}];
 
 	$scope.idUsuario = "1";
 	
@@ -29,11 +27,11 @@ app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS,
 		$http.get("iniciarLaberinto/"+ $scope.idUsuario +"/" + idLaberinto).success(function(data) {
 			$scope.habitaciones = data.laberinto.habitaciones;
 			$scope.habitacionActual = $scope.habitaciones[0];
-			$scope.inventarioActual = [{nombre: 'Martillo'},{nombre: 'Serrucho'},{nombre:"Llave"}];
+			$scope.inventarioActual = data.laberinto.inventario
 			console.log(data);
 		}).error(errorHandler);
 	}
-
+	
 	this.verDetalle = function(laberinto) {
 		$scope.laberintoSeleccionado = laberinto;
 		$("#accesoLaberintoModal").modal({});

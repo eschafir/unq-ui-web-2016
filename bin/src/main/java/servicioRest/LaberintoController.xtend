@@ -5,8 +5,8 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.XTRest
 import repo.Repo
-import crearLaberintos.LaberintoMinimizado
-import crearLaberintos.IniciarLaberintoMinimizado
+import crearLaberintos.IniciarLaberintoMinimizadoIF
+import crearLaberintos.AnalizarEfecto
 
 @Controller
 class LaberintoController {
@@ -45,25 +45,46 @@ class LaberintoController {
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 
-		val respuesta = new IniciarLaberintoMinimizado(jugador, laberinto)
+		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
+		//jugador.iniciarJuego(laberinto)
+		ok(respuesta.toJson)
+	}
+	
+	@Get("/iniciarLaberinto/:uid/:lid")
+	def mostrarDatosLaberinto2() {
+		response.contentType = "application/json"
+
+		val idJugador = Long.parseLong(uid)
+		val idLab = Long.parseLong(lid)
+
+		var repo = new Repo()
+		val jugador = repo.getJugador(idJugador)
+		val laberinto = repo.getLaberinto(idLab)
+
+		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
+		//jugador.iniciarJuego(laberinto)
 		ok(respuesta.toJson)
 	}
 
 	@Get("/realizarAccion")
-	def mostrarDatosAccionRealizada(String hid, String aid) {
+	def mostrarDatosAccionRealizada(String uid, String hid, String aid) {
 		response.contentType = "application/json"
 
+		val idJugador = Long.parseLong(uid)
 		val idHabitacion = Long.parseLong(hid)
 		val idAccion = Long.parseLong(aid)
 
 		var repo = new Repo()
+		val jugador = repo.getJugador(idJugador)
 		val habitacion = repo.getHabitacion(idHabitacion)
+		val accion = habitacion.buscarAccion(idAccion)
 
-		ok(habitacion.toJson)
+		val resultado = accion.ejecutar(habitacion, jugador)
+
+		ok(resultado.toJson)
 	}
 
 	def static void main(String[] args) {
-
 		XTRest.start(LaberintoController, 9000)
 	}
 }

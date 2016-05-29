@@ -46,10 +46,11 @@ class LaberintoController {
 		val laberinto = repo.getLaberinto(idLab)
 
 		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
+
 		//jugador.iniciarJuego(laberinto)
 		ok(respuesta.toJson)
 	}
-	
+
 	@Get("/iniciarLaberinto/:uid/:lid")
 	def mostrarDatosLaberinto2() {
 		response.contentType = "application/json"
@@ -62,6 +63,7 @@ class LaberintoController {
 		val laberinto = repo.getLaberinto(idLab)
 
 		val respuesta = new IniciarLaberintoMinimizadoIF(jugador, laberinto)
+
 		//jugador.iniciarJuego(laberinto)
 		ok(respuesta.toJson)
 	}
@@ -82,6 +84,18 @@ class LaberintoController {
 		val resultado = accion.ejecutar(habitacion, jugador)
 
 		ok(resultado.toJson)
+	}
+
+	@Get("/obtenerJugador/:uid")
+	def obtenerJugador() {
+		response.contentType = "application/json"
+		val idJugador = Long.parseLong(uid)
+
+		var repo = new Repo()
+		val jugador = repo.getJugador(idJugador)
+
+		ok(jugador.toJson)
+
 	}
 
 	def static void main(String[] args) {

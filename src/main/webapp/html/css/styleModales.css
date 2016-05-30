@@ -35,6 +35,7 @@
 	float:left;
 	margin-left:10px;
 	margin-top:45px;
+	background-color:#f5f5f5;
 }
 
 #contenedorInternoIzquierdo h3 {
@@ -62,7 +63,7 @@
 }
 
 #contenedorInternoDerecho {
-	height:210px;
+	height:222px;
 	width:250px;
 	float:right;
 	margin-top:-6px;
@@ -73,7 +74,13 @@
 	margin-top:44px;
 	width:200px;
 	height:350px;
+	background-color:#f5f5f5;
 }
+
+#selectorInventario{
+	margin-top:13px;
+	height:222px;
+	}
 
 .btn-mio-jugar {
 	float:right;
@@ -92,10 +99,6 @@
 .style-header {
 	text-align:center;
 	font-size:60px;
-}
-
-#selectorInventario {
-	height:210px;
 }
 
 .well {

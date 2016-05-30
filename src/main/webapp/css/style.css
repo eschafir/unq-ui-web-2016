@@ -209,20 +209,6 @@ h6 {
 	font-size:16px;
 }
 
-#contenedorImagen{
-}
-
-#contenedorInternoIzquierdo{
-	background-color: #f5f5f5;
-}
-
-#contenedorInternoDerecho{
-
-}
-
-#contenedorInventario{
-	background-color:#f5f5f5;
-}
 
 .botonesLaberintos {
 	width:200px;
@@ -234,8 +220,6 @@ h6 {
 }
 
 .imagenesLabJugable{
-	height:200px;
-	width:200px;
 }
 
 .fade

@@ -210,11 +210,14 @@ h6 {
 }
 
 #contenedorImagen{
-	background-color:#f5f5f5;
+}
+
+#contenedorInternoIzquierdo{
+	background-color: #f5f5f5;
 }
 
 #contenedorInternoDerecho{
-	background-color:#f5f5f5;
+
 }
 
 #contenedorInventario{

@@ -41,11 +41,17 @@ app.controller('laberintoController', function($scope, LaberintoS, HabitacioneS,
 	$scope.realizarAccion = function(idHabitacion, idAccion) {
 		$http.get("realizarAccion/"+ $scope.idUsuario +"/" + idHabitacion + "/" + idAccion).success(function(data) {
 			$scope.habitacionActual = data.habitacion
-			$scope.inventarioActual = $scope.inventarioActual.concat(data.inventario)
+			$scope.esFinal = data.ganaste
+			// $scope.habitacionActual.acciones = data.habitacion.acciones;
+			$scope.inventarioActual = data.inventario
+
+			if($scope.esFinal){
+				$("#ganasteModal").modal({});
+			};
 			console.log(data);
 		}).error(errorHandler);
 	}
-	
+
 	this.verDetalle = function(laberinto) {
 		$scope.laberintoSeleccionado = laberinto;
 		$("#accesoLaberintoModal").modal({});

@@ -12,22 +12,13 @@ import crearLaberintos.AnalizarEfecto
 class LaberintoController {
 	extension JSONUtils = new JSONUtils
 
-	@Get("/laberintos")
-	def mostrarLaberintos() {
-		response.contentType = "application/json"
-
-		val repo = new Repo()
-
-		ok(repo.laberintosMinimizados.toJson)
-	}
-
 	@Get("/laberintos/:userid")
 	def mostrarLista() {
 		response.contentType = "application/json"
 
 		val idJugador = Long.parseLong(userid)
 
-		var repo = new Repo()
+		var repo = Repo.repo
 		val jugador = repo.getJugador(idJugador)
 		val laberintos = repo.laberintosDeJugador(jugador)
 
@@ -41,7 +32,7 @@ class LaberintoController {
 		val idJugador = Long.parseLong(uid)
 		val idLab = Long.parseLong(lid)
 
-		var repo = new Repo()
+		var repo = Repo.repo
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 
@@ -58,7 +49,7 @@ class LaberintoController {
 		val idJugador = Long.parseLong(uid)
 		val idLab = Long.parseLong(lid)
 
-		var repo = new Repo()
+		var repo = Repo.repo
 		val jugador = repo.getJugador(idJugador)
 		val laberinto = repo.getLaberinto(idLab)
 
@@ -76,7 +67,7 @@ class LaberintoController {
 		val idHabitacion = Long.parseLong(hid)
 		val idAccion = Long.parseLong(aid)
 
-		var repo = new Repo()
+		var repo = Repo.repo
 		val jugador = repo.getJugador(idJugador)
 		val habitacion = repo.getHabitacion(idHabitacion)
 		val accion = habitacion.buscarAccion(idAccion)
@@ -92,7 +83,7 @@ class LaberintoController {
 		response.contentType = "application/json"
 		val idJugador = Long.parseLong(uid)
 
-		var repo = new Repo()
+		var repo = Repo.repo
 		val jugador = repo.getJugador(idJugador)
 
 		ok(jugador.toJson)

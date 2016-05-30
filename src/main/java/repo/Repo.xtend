@@ -19,11 +19,29 @@ import unq_ciu.gatoEncerrado.acciones.Mover
 @Accessors
 class Repo {
 
-	new() {
+	static Repo repo
+	List<Jugador> jugadores
+	List<Item> listaItems
+	List<Habitacion> habitaciones
+	List<Laberinto> laberintos
+	
+
+	def static Repo getRepo() {
+		if (repo == null) {
+			repo = new Repo();
+		}
+		return repo;
+	}
+	
+	new(){
+		listaItems = inicializarItems()
+		habitaciones = inicializarHabitaciones()
+		laberintos = inicializarLaberintos()
+		jugadores = inicializarJugadores()
 	}
 
 	//La lista de items de todo el repo
-	def getListaItems() {
+	def inicializarItems() {
 
 		var martillo = new Item("Martillo", "Martillo comun")
 		var llaveCocina = new Item("Llave de la cocina", "Llave de la cocina")
@@ -42,7 +60,7 @@ class Repo {
 		items
 	}
 
-	def getHabitaciones() {
+	def inicializarHabitaciones() {
 
 		//Habitaciones de casa abandonada
 		var entrada = new Habitacion(0, "Entrada", true, false, "entrada.jpg")
@@ -103,12 +121,11 @@ class Repo {
 
 		//Cocina: Salir
 		habFinales.get(1).agregarAccion(new Salir(2))
-		habFinales.get(1).agregarAccion(new Salir(2))
 
 		//Garage: Agarrar(llave cocina), Mover(Living)
 		habFinales.get(2).agregarAccion(new Agarrar(3, listaItems.get(1)))
 		habFinales.get(2).agregarAccion(moverLiving)
-		habFinales.get(2).agregarAccion(new Mover(20,new Habitacion("Test",false,false)))
+		habFinales.get(2).agregarAccion(new Mover(20, new Habitacion("Test", false, false)))
 
 		//Living: Usar(llave cocina) ---> Mover(cocina)
 		habFinales.get(3).agregarAccion(usarLlaveCoc)
@@ -251,21 +268,12 @@ class Repo {
 		habFinales
 	}
 
-	def habsFinales() {
-		var habsFinales = newArrayList
 
-		habsFinales.addAll(habsFinalesCasa)
-		habsFinales.addAll(habsFinalesMuseo)
-		habsFinales.addAll(habsFinalesPrision)
-		habsFinales.addAll(habsFinalesHospital)
-		habsFinales.addAll(habsFinalesBomberos)
-		habsFinales
-	}
 
 	/**
  	* Este metodo genera los laberintos. Luego es llamado desde el controller.
  	*/
-	def getLaberintosMinimizados() {
+	def inicializarLaberintos() {
 
 		#[
 			new Laberinto(1, "Casa", "casa.jpg", habsFinalesCasa),
@@ -279,13 +287,13 @@ class Repo {
 	/**
  	* Este metodo genera los jugadores. Luego es llamado desde el controller.
  	*/
-	def listaJugadores() {
+	def inicializarJugadores() {
 
 		//Jugador1
 		var jugador1 = new Jugador(1, "Player1")
+
 		//jugador1.agregarAlInventario(listaItems.get(1))
 		//jugador1.agregarAlInventario(listaItems.get(0))
-
 		//Jugador2 en "Garage" con llave de la cocina
 		var jugador2 = new Jugador(2, "Player2", habitaciones.get(2))
 		jugador2.agregarAlInventario(listaItems.get(1))
@@ -293,9 +301,9 @@ class Repo {
 		//Jugador3 en Cocina
 		var jugador3 = new Jugador(3, "Jugador 3", habitaciones.get(1))
 
-		jugador1.laberintos = laberintosMinimizados
-		jugador2.laberintos = laberintosMinimizados
-		jugador3.laberintos = laberintosMinimizados.tail.toList
+		jugador1.laberintos = laberintos
+		jugador2.laberintos = laberintos
+		jugador3.laberintos = laberintos.tail.toList
 
 		var listaJugadores = #[jugador1, jugador2, jugador3]
 		listaJugadores
@@ -306,7 +314,7 @@ class Repo {
 	 * @params id : id del jugador que se quiere obtener.
 	 */
 	def getJugador(Long id) {
-		listaJugadores.findFirst[it.id == id]
+		jugadores.findFirst[it.id == id]
 	}
 
 	/**
@@ -314,7 +322,7 @@ class Repo {
 	 * @params id : id del laberinto que se quiere obtener.
 	 */
 	def getLaberinto(Long id) {
-		laberintosMinimizados.findFirst[it.id == id]
+		laberintos.findFirst[it.id == id]
 	}
 
 	/**
@@ -322,7 +330,7 @@ class Repo {
 	 * @params id : id de la habitacion que se quiere obtener.
 	 */
 	def getHabitacion(Long id) {
-		habsFinales.findFirst[it.id == id]
+		habitaciones.findFirst[it.id == id]
 	}
 
 	def laberintosDeJugador(Jugador j) {
@@ -357,7 +365,7 @@ class Repo {
 	}
 
 	def Laberinto traerLaberinto(Habitacion h) {
-		laberintosMinimizados.findFirst[it.habitaciones.contains(h)]
+		laberintos.findFirst[it.habitaciones.contains(h)]
 	}
 
 }

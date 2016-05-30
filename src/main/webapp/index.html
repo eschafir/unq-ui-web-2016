@@ -10,13 +10,20 @@
     
     <script src="html/js/jquery-1.12.3.min.js"></script>
     <script src="html/js/bootstrap.min.js"></script>
-    <!-- <script src="js/funciones.js"></script> -->
+    <script src="js/funciones.js"></script>
     <!-- Agregamos angularJS-->
     <script src="node_modules/angular/angular.js"></script>
 	  <script src="node_modules/angular-resource/angular-resource.js"></script>
     <script src="js/myAppController.js"></script>
+    <!-- Lo que está debajo tiene que estar en funciones.js, luego se ve-->
+    <script>
+      function cerrarVentanaGanasteModal() {
+        $('#ganasteModal').modal('hide');
+        $('#contenedorModal').modal('hide');
+        $('#accesoLaberintoModal').modal('hide');
+    }
+</script>
     <title>Aca hay gato encerrado</title>
-    {{20*3}}
    </head>
 
    <body class="container" ng-app="laberintoApplication">
@@ -115,7 +122,7 @@
           <div id="contenedorInternoDerecho" class="col-md-2  panel panel-default">
             <ul class="list-group" align="center">
               <li>
-                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones" ng-click="realizarAccion(habitacionActual.id, accion.id)">{{accion.nombre}} </button> 
+                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones" ng-click="realizarAccion(habitacionActual.id, accion.id)"s>{{accion.nombre}} </button> 
               </li>
             </ul>
           </div>
@@ -137,8 +144,34 @@
       </div>
    </div>
   </div>
-</div>
+
  <!-- Fin - Laberinto Jugable Modal -->
 
+ <!-- GanasteModal -->
+
+ <div class="modal fade" id="ganasteModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header well">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 style="text-align:center;">¡GANASTE!</h3>
+     </div>
+         <div align="center" class="modal-body">
+          <img src="images/ganaste.jpg"/>
+          <br></br>
+          <strong>Con tu ingenio pudiste escapar exitosamente</strong>
+          <br></br>
+          <strong>del Laberinto. Felicitaciones!</strong>
+          <br></br>
+          <strong>Prueba otros laberintos.</strong>
+     </div>
+         <div class="modal-footer">
+        <!-- <a href="#" data-dismiss="modal" class="btn btn-danger">OK</a> -->
+          <button onclick="cerrarVentanaGanasteModal()" class="btn btn-mio-ok">OK</button>
+        </div>
+      </div>
+   </div>
+</div>
+</div>
    </body>
 </html>

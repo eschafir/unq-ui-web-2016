@@ -11,6 +11,7 @@ class IniciarLaberintoMinimizadoIF {
 	IniciarLaberintoMinimizado laberinto
 
 	new(Jugador jugador, Laberinto laberinto) {
+		jugador.inventario = newArrayList()
 		this.habInicial = laberinto.getHabitacionInicial
 		this.habFinal = laberinto.getHabitacionFinal
 		this.laberinto = new IniciarLaberintoMinimizado(jugador, laberinto)

@@ -10,7 +10,7 @@
     
     <script src="html/js/jquery-1.12.3.min.js"></script>
     <script src="html/js/bootstrap.min.js"></script>
-    <script src="js/funciones.js"></script>
+    <!-- <script src="js/funciones.js"></script> -->
     <!-- Agregamos angularJS-->
     <script src="node_modules/angular/angular.js"></script>
 	  <script src="node_modules/angular-resource/angular-resource.js"></script>
@@ -43,7 +43,7 @@
                 <ul class="list-group" align="left">
                   <li class="laberinto1 list-group-item row swing" ng-repeat="laberinto in laberintos">
                   <div>
-                    <img src="images/laberinto1.jpg" />
+                    <img id="imagenesLab" ng-src="images/{{laberinto.path}}" />
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" ng-click="LaberintoCtrl.verDetalle(laberinto)">{{laberinto.nombre}}</button> 
                   </div>
                   </li>
@@ -75,8 +75,8 @@
            </div>
            <div id="contenedorInterno" class="modal-body col-md-8 col-md-offset-2 well well-lg">
             <p>
-            <img src="images/ganaste.jpg"/ align="left">
-            Este es el laberinto del terror. Es un laberinto muy complejo! Continua con las pistas.Etc,etc.
+            <img ng-src="images/{{laberintoSeleccionado.path}}"/ align="left">
+            Estas seguro que deseas jugar <p>{{laberintoSeleccionado.nombre}}?</p>
             </p>
             <!-- <button onclick="cerrarVentanaGanastaModal()" class="btn btn-mio-jugar">Jugar</button> -->
             <button type="button" class="btn btn-mio-jugar btn-lg btn-success btn-acciones" data-toggle="modal" data-target="#contenedorModal" ng-click="iniciarLaberinto(laberintoSeleccionado.laberintoId)">Jugar</button>
@@ -102,11 +102,11 @@
        
        <div id="contenedorInternoIzquierdo" class="col-md-9  panel panel-default">
           
-          <h3>Living</h3>
+          <h3>{{habitacionActual.nombre}}</h3>
 
           <div id="contenedorImagen" class="col-md-6  panel panel-default">
             <p>
-              <img src="images/ganaste.jpg"/>
+              <img ng-src="images/{{habitacionActual.path}}"/>
             </p>
           </div> 
           
@@ -115,7 +115,7 @@
           <div id="contenedorInternoDerecho" class="col-md-2  panel panel-default">
             <ul class="list-group" align="center">
               <li>
-                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones">{{accion.nombre}}</button> 
+                <button type="button" class="btn btn-success btn-acciones row" ng-repeat="accion in habitacionActual.acciones" ng-click="realizarAccion(habitacionActual.id, accion.id)">{{accion.nombre}} </button> 
               </li>
             </ul>
           </div>
